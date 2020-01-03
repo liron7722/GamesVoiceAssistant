@@ -6,7 +6,8 @@ import foldername.file.py
 
 class VoiceAssistant:
     property
-    _Name = 'Daizy'
+    _Name = 'Daisy'
+    _key_word = 'hello daisy'
     _day = '1'
     _month = '1'
     _year = '2020'
@@ -15,6 +16,14 @@ class VoiceAssistant:
     _creators = 'Liron Revah and Baruh Shalumov'
 
     def __init__(self):
+        #TODO
+
+    def close(self):
+        massage = 'Goodbye'
+        self.tts(massage)
+        return True
+
+    def listen(self):
         #TODO
 
     # output - return Today Day, Month and Year as int

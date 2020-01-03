@@ -1,17 +1,8 @@
+import Files.Game as G
 
-class Monopoly:
-    _name = 'Monopoly'
-    _creator = 'Liron Revah and Baruh Shalumov'
-    _page_location = None
 
-    def __init__(self, page_loc):
-        m_page_location = 'Home Page'
-
-    def getMyName(self):
-        return self._name
-
-    def getMyCreator(self):
-        return self._creator
+class Monopoly(G.Game):
+    pass
 
     def getElementsXpaths(self):
         elementsXpaths = {

@@ -18,6 +18,10 @@ class MyWebDriver:
         m_page = page
 
 # Functions
+    def close(self):
+        self._driver.quit()
+        return True
+
     def getMyCreator(self):
         return self._creator
 
