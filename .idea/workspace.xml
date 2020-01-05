@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d07dabe-9fde-4a2c-a4d7-47893ee1456f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/Game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/Recorder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebElements.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/GameCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/GameCenter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/VoiceAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/VoiceAssistant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/WebDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebDriver.py" afterDir="false" />
@@ -72,9 +73,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1578006652417" />
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1578004508695">
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1578246906423">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1578004508695" />
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1578246906423" />
   </component>
 </project>

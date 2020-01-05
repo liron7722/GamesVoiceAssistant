@@ -1,10 +1,10 @@
+# imports
 import os
 import json
 import Files.Game as G
 
 
 class GameCenter:
-    property
     _list_of_games = []
     _games_folder = 'game py files'
     _games_list_file = 'games_list_file.json'
@@ -43,4 +43,4 @@ class GameCenter:
 
     def writeJson(self, data, filename):
         with open(filename, 'w') as outfile:
-            json.dump(data, outfile)
+            json.dump(data, outfile, indent=4)

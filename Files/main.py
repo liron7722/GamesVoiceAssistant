@@ -1,3 +1,4 @@
+# imports
 import Files.WebDriver as WD
 import Files.VoiceAssistant as VA
 import Files.GameCenter as GC
@@ -29,13 +30,18 @@ class MyMain:
         game = self._GamesCenter.getGame(game_name)
         self._WebDriver.__init__(game, game.get_url)
         self._VoiceAssistant.__init__(game)
-        while True:
-            command = self._VoiceAssistant.listen()
-            if command in self._exit_key_words:
-                self.close_all()
-                break
-            else:
-                self._WebDriver(command)
+        stop = False
+        while stop is not True:
+            commands_and_data = self._VoiceAssistant.listen()
+            for command in commands_and_data.keys():
+                if command in self._exit_key_words:
+                    self.close_all()
+                    stop = True
+                    break
+                else:
+                    data = commands_and_data[command]
+                    result = self._WebDriver.get_command(command, data)
+                    self._VoiceAssistant.result_of_command(result)
 
 
 

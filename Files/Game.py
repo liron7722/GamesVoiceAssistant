@@ -1,28 +1,57 @@
-
+import json
+import Files.WebElements as WE
 
 class Game:
+    _name = None # game name
+    _file = None # file name as string
+    _creator = None # string
+    _path = None # path as string
+    _json = None # json file for WebElements
+    _web_elements = None # dict of WebElements
 
-    def __init__(self, name, file, creator, url):
+    def __init__(self, name, file, creator, path, json_name):
         self._name = name
         self._file = file
         self._creator = creator
-        self._page_location = url
+        self._path = path
+        self._json = json_name
+        self._web_elements = dict()
 
-    def get_name(self):
-        return self._name
+    def get_info(self, string):
+        if string == 'all':
+            return {'name':self._name, 'file':self._file, 'creator':self._creator, 'path':self._path, 'we':self._web_elements}
+        elif string == 'name':
+            return self._name
+        elif string == 'file':
+            return self._file
+        elif string == 'creator':
+            return self._creator
+        elif string == 'path':
+            return self._path
+        elif string == 'we':
+            return self._web_elements
 
-    def get_creator(self):
-        return self._creator
+    def readJson(self, path, filename):
+        with open(path + '/' + filename) as json_file:
+            data = json.load(json_file)
+        return data
 
-    def get_File(self):
-        return self._file
+    def load_web_elements(self):
+        data = self.readJson(self._path, self._json) # get dict[name] = dict[name \ my_type \ path_type \ path]
+        for key in data.keys():
+            name = self._web_elements[key]['name']
+            my_type = self._web_elements[key]['my_type']
+            path_type = self._web_elements[key]['path_type']
+            path = self._web_elements[key]['path']
 
-    def get_url(self):
-        return self._page_location
+            self._web_elements[name] = WE.WebElements(name, my_type, path_type, path)
 
-    def get_my_dict(self):
-        return {'name':self.get_name(),
-                'file': self.get_File(),
-                'creator':self.get_creator(),
-                'url':self.get_url()
-                }
+    def readJson(self, path, filename):
+        with open(path + '/' + filename) as json_file:
+            data = json.load(json_file)
+        return data
+
+    def writeJson(self, data, filename):
+        with open(filename, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
+
