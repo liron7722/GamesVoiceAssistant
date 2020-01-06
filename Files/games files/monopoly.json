@@ -1,0 +1,146 @@
+{
+    "new game": {
+        "name": "new game",
+        "my_type": null,
+        "path_type": null,
+        "path": null
+    },
+    "exit": {
+        "name": "exit",
+        "my_type": null,
+        "path_type": null,
+        "path": null
+    },
+    "start": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "number of players": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "player name": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "player color": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "player type": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Roll dice": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Buy label": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Manage label": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Trade label": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "View status": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Turn status": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Show Card": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Card Info": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Propose Trade": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Cancel Trade": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Accept Trade": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Reject Trade": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Trade partner": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Offer my Money money": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Offer partner Money money": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Offer my item": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    },
+    "Offer partner item": {
+        "name": "",
+        "my_type": "",
+        "path_type": "",
+        "path": ""
+    }
+}

@@ -98,14 +98,16 @@ class VoiceAssistant:
         play_obj.wait_done()  # Wait until sound has finished playing
 
     def listen(self):
-        sound = self._recorder.listen()
-        text = self.stt(self, sound)
-        if self._kw_heard:
-            commands_and_data = self.extract_info(text)
-            return commands_and_data
-        else:
-            if text is self._key_word:
-                self._kw_heard = True
+        sound = None
+        while sound is None:
+            sound = self._recorder.listen()
+            text = self.stt(self, sound)
+            if self._kw_heard:
+                commands_and_data = self.extract_info(text)
+                return commands_and_data
+            else:
+                if text is self._key_word:
+                    self._kw_heard = True
 
     def extract_info(self, text):
         result = dict()

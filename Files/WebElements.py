@@ -13,13 +13,13 @@ class WebElements():
         self._path = path
 
     def get_data(self, string):
-        if string == 'all':
+        if string is None:
             return self._name, self._type, self._path_type, self._path
-        elif string == 'name':
+        elif string is 'name':
             return self._name
-        elif string == 'type':
+        elif string is 'type':
             return self._type
-        elif string == 'path_type':
+        elif string is 'path_type':
             return self._path_type
-        elif string == 'path':
+        elif string is 'path':
             return self._path

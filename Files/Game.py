@@ -1,40 +1,32 @@
 import json
 import Files.WebElements as WE
 
+
 class Game:
     _name = None # game name
-    _file = None # file name as string
     _creator = None # string
     _path = None # path as string
     _json = None # json file for WebElements
-    _web_elements = None # dict of WebElements
+    _web_elements = dict() # dict of WebElements => [name] = WebElement
 
-    def __init__(self, name, file, creator, path, json_name):
+    def __init__(self, name, creator, url, json_name):
         self._name = name
-        self._file = file
         self._creator = creator
-        self._path = path
+        self._url = url
         self._json = json_name
-        self._web_elements = dict()
+        self.load_web_elements()
 
     def get_info(self, string):
-        if string == 'all':
-            return {'name':self._name, 'file':self._file, 'creator':self._creator, 'path':self._path, 'we':self._web_elements}
-        elif string == 'name':
+        if string is None:
+            return {'name':self._name, 'creator':self._creator, 'path':self._url, 'web_elem':self._web_elements}
+        elif string is 'name':
             return self._name
-        elif string == 'file':
-            return self._file
-        elif string == 'creator':
+        elif string is 'creator':
             return self._creator
-        elif string == 'path':
-            return self._path
-        elif string == 'we':
+        elif string is 'url':
+            return self._url
+        elif string is 'web_elem':
             return self._web_elements
-
-    def readJson(self, path, filename):
-        with open(path + '/' + filename) as json_file:
-            data = json.load(json_file)
-        return data
 
     def load_web_elements(self):
         data = self.readJson(self._path, self._json) # get dict[name] = dict[name \ my_type \ path_type \ path]

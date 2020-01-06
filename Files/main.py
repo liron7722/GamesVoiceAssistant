@@ -6,7 +6,6 @@ import Files.GameCenter as GC
 
 class MyMain:
     property
-    _exit_key_words = ['close game', 'i want to quit']
     _GamesCenter = None
     _VoiceAssistant = None
     _WebDriver = None
@@ -28,20 +27,21 @@ class MyMain:
     def run(self):
         game_name = 'monopoly'
         game = self._GamesCenter.getGame(game_name)
-        self._WebDriver.__init__(game, game.get_url)
+        self._WebDriver.__init__(game)
         self._VoiceAssistant.__init__(game)
         stop = False
         while stop is not True:
             commands_and_data = self._VoiceAssistant.listen()
             for command in commands_and_data.keys():
-                if command in self._exit_key_words:
-                    self.close_all()
-                    stop = True
-                    break
-                else:
-                    data = commands_and_data[command]
-                    result = self._WebDriver.get_command(command, data)
-                    self._VoiceAssistant.result_of_command(result)
+                data = commands_and_data[command]
+                result, stop = self._WebDriver.get_command(command, data)
+                self._VoiceAssistant.result_of_command(result)
+
+
+def run():
+    A = MyMain()
+    A.run()
+
 
 
 

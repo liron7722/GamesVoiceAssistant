@@ -14,6 +14,7 @@ swidth = 2
 
 TIMEOUT_LENGTH = 5
 
+
 class Recorder:
 
     @staticmethod
@@ -53,7 +54,6 @@ class Recorder:
             current = time.time()
             rec.append(data)
         return rec
-
 
     def listen(self):
         print('Listening beginning')
