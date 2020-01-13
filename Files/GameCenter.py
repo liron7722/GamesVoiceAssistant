@@ -1,6 +1,6 @@
 # imports
 import json
-import Files.Game as G
+import Game as G
 
 
 class GameCenter:

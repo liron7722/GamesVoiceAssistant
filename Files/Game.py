@@ -1,5 +1,5 @@
 import json
-import Files.WebElements as WE
+import WebElements as WE
 
 
 class Game:

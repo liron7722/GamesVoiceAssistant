@@ -1,7 +1,7 @@
 # imports
 import os
-import Files.Game as G
-import Files.Recorder as R
+import Game as G
+import Recorder as R
 from pydub.playback import play
 
 # Imports the Google Cloud client library

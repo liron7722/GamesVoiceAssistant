@@ -1,7 +1,7 @@
 # imports
-import Files.WebDriver as WD
-import Files.VoiceAssistant as VA
-import Files.GameCenter as GC
+import WebDriver as WD
+import VoiceAssistant as VA
+import GameCenter as GC
 
 
 
