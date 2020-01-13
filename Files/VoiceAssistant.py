@@ -13,21 +13,20 @@ from google.cloud import texttospeech
 
 class VoiceAssistant:
     property
-    _name = 'Daisy'
-    _key_word = 'hello ' + _name
+    _name = None
+    _key_word = None
     _kw_heard = False
     _favFood = 'human voice'
     _creators = 'Liron Revah and Baruh Shalumov'
 
     _recorder = R.Recorder()
-
-    _voice_gender = texttospeech.enums.SsmlVoiceGender.FEMALE
+    _voice_gender = None
     _language_code ='en-US'
-    _credential_path = "SpeechClassAPI2.json" #TODO our own json
+    _credential_path = "gamesvoiceassistant-63718bb5249e.json"
     _stt_client = speech.SpeechClient()
     _tts_client = texttospeech.TextToSpeechClient()
 
-    def __init__(self, name, my_type):
+    def __init__(self, my_type, name):
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = self._credential_path
 
         if name is not None:
@@ -36,6 +35,8 @@ class VoiceAssistant:
         if my_type is not None:
             # voice gender ("neutral", "FEMALE", "MALE")
             if my_type == 'va':
+                self._name = 'Daisy'
+                self._key_word = 'hello ' + self._name
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.FEMALE
             elif my_type == 'opponent':
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.NEUTRAL
