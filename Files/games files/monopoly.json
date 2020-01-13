@@ -2,145 +2,194 @@
     "new game": {
         "name": "new game",
         "my_type": null,
-        "path_type": null,
-        "path": null
+        "string_type": null,
+        "string": null
     },
     "exit": {
         "name": "exit",
         "my_type": null,
-        "path_type": null,
-        "path": null
+        "string_type": null,
+        "string": null
     },
     "start": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+        "name": "start",
+        "my_type": "click",
+        "string_type": "xpath",
+        "string": "/html/body/div[8]/div[10]/input"
+
     },
     "number of players": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+        "name": "number of players",
+        "my_type": "pick",
+        "string_type": "id",
+        "string": "playernumber"
     },
     "player name": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+        "name": "player name",
+        "my_type": "send",
+        "string_type": "id",
+        "string": "player1name"
     },
     "player color": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+        "name": "player color",
+        "my_type": "send",
+        "string_type": "id",
+        "string": "player1color"
     },
     "player type": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+        "name": "player type",
+        "my_type": "pick",
+        "string_type": "id",
+        "string": "player1ai"
     },
-    "Roll dice": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+	"log": {
+		"name": "log",
+		"my_type": "read",
+		"string_type": "id",
+		"string": "alert"
     },
-    "Buy label": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+	"current player": {
+		"name": "current player",
+		"my_type": "read",
+		"string_type": "id",
+		"string": "pname"
     },
-    "Manage label": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+    "roll dice": {
+        "name": "roll dice",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "nextbutton"
     },
-    "Trade label": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+	"resign": {
+		"name": "resign",
+		"my_type": "click",
+		"string_type": "id",
+		"string": "resignbutton"
     },
-    "View status": {
-        "name": "",
-        "my_type": "",
-        "path_type": "",
-        "path": ""
+    "buy label": {
+        "name": "buy label",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "buy-menu-item"
+    },
+    "manage label": {
+        "name": "manage label",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "manage-menu-item"
+    },
+    "trade label": {
+        "name": "trade label",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "trade-menu-item"
+    },
+    "view stats": {
+        "name": "view stats",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "viewstats"
     },
     "Turn status": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Show Card": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Card Info": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
+    },
+	"card name": {
+		"name": "card name",
+		"my_type": "read",
+		"string_type": "id",
+		"string": "cell1name"
+    },
+	"card owner": {
+		"name": "card owner",
+		"my_type": "read",
+		"string_type": "id",
+		"string": "cell1owner"
+    },
+	"card postion holder": {
+		"name": "card postion holder",
+		"my_type": "read",
+		"string_type": "id",
+		"string": "cell1positionholder"
     },
     "Propose Trade": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Cancel Trade": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Accept Trade": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Reject Trade": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Trade partner": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Offer my Money money": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Offer partner Money money": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Offer my item": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
     },
     "Offer partner item": {
         "name": "",
         "my_type": "",
-        "path_type": "",
-        "path": ""
+        "string_type": "",
+        "string": ""
+    },
+	    "dice 1": {
+        "name": "dice 1",
+        "my_type": "read",
+        "string_type": "id",
+        "string": "die0"
+    },
+	    "dice 2": {
+        "name": "dice 2",
+        "my_type": "read",
+        "string_type": "id",
+        "string": "die1"
     }
 }

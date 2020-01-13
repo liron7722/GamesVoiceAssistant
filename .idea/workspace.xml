@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0d07dabe-9fde-4a2c-a4d7-47893ee1456f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/GameCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/GameCenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/Recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/Recorder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/VoiceAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/VoiceAssistant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/WebDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebDriver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/WebElements.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebElements.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/game py files/games_list_file.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/game py files/monopoly.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/games files/monopoly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/games files/monopoly.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,9 +69,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1578006652417" />
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1578302464650">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="534" y="277" key="com.intellij.ide.util.TipDialog" timestamp="1578580573996">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="534" y="277" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1578580573996" />
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1578302464650" />
   </component>
 </project>

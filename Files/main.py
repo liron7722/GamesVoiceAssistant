@@ -4,6 +4,7 @@ import Files.VoiceAssistant as VA
 import Files.GameCenter as GC
 
 
+
 class MyMain:
     property
     _GamesCenter = None
@@ -36,6 +37,7 @@ class MyMain:
                 data = commands_and_data[command]
                 result, stop = self._WebDriver.get_command(command, data)
                 self._VoiceAssistant.result_of_command(result)
+
 
 
 def run():

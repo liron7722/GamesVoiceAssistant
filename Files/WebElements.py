@@ -3,23 +3,23 @@
 class WebElements():
     _name = None # string
     _type = None # button, info, textbox
-    _path_type = None # id, xpath, etc..
-    _path = None # string
+    _string_type = None # id, xpath, etc..
+    _string = None # string
 
-    def __init__(self, name, my_type, path_type, path):
+    def __init__(self, name, my_type, string_type, string):
         self._name = name
         self._type = my_type
-        self._path_type = path_type
-        self._path = path
+        self._string_type = string_type
+        self._string = string
 
     def get_data(self, string):
         if string is None:
-            return self._name, self._type, self._path_type, self._path
+            return self._name, self._type, self._string_type, self._string
         elif string is 'name':
             return self._name
         elif string is 'type':
             return self._type
-        elif string is 'path_type':
-            return self._path_type
-        elif string is 'path':
-            return self._path
+        elif string is 'string_type':
+            return self._string_type
+        elif string is 'string':
+            return self._string

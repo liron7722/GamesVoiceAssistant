@@ -104,11 +104,11 @@ class MyWebDriver:
     # output - return True + None if successful, False if not + massage
     # do - send data to be checked if viable, if yes lunch command
     def run_command(self, web_elem, data):
-        name, command_type, path_type, path = web_elem.get_data()
-        return self.execute_command(self, command_type, path, path_type, data)
+        name, command_type, string_type, string = web_elem.get_data()
+        return self.execute_command(self, command_type, string_type, string, data)
 
-    def execute_command(self, command_type, path, path_type, data):
-        elem = self.find_elem(path_type, path)
+    def execute_command(self, command_type, string_type, string, data):
+        elem = self.find_elem(string_type, string)
         if command_type is 'click':
             return self.click_elem(elem)
         elif command_type is 'send':
