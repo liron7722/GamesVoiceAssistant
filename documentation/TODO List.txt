@@ -1,0 +1,6 @@
+- add all buttons to json file via game file inspect
+- add proper intent in dialogflow for each button
+- add web driver option to select from a list (like list of amount of players)
+- add dialogflow code to voiceassistance.py
+- cheak bugs
+- do class diagram for class presentation 
