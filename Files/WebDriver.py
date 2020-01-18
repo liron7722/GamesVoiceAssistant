@@ -123,6 +123,8 @@ class MyWebDriver:
             return self.send_data_to_elem(elem, data)
         elif command_type is 'read':
             return self.read_elem_text(elem)
+        elif command_type is 'select':
+            return self.select_elem(elem, data)
 
     def alert_handle(self):
         obj = self._driver.switch_to.alert

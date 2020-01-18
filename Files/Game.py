@@ -1,5 +1,5 @@
 import json
-import WebElements as WE
+import WebElements as WebElem
 
 
 class Game:
@@ -36,7 +36,7 @@ class Game:
             path_type = self._web_elements[key]['path_type']
             path = self._web_elements[key]['path']
 
-            self._web_elements[name] = WE.WebElements(name, my_type, path_type, path)
+            self._web_elements[name] = WebElem.WebElements(name, my_type, path_type, path)
 
     def readJson(self, path, filename):
         with open(path + '/' + filename) as json_file:

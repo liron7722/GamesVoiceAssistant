@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d07dabe-9fde-4a2c-a4d7-47893ee1456f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/GameCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/GameCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/Recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/Recorder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/VoiceAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/VoiceAssistant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/WebDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebDriver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/games files/monopoly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/games files/monopoly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/TODO List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/TODO List.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,6 @@
 # imports
 import json
-import Game as G
+import Game
 
 
 class GameCenter:
@@ -11,7 +11,7 @@ class GameCenter:
     def __init__(self):
         game_list = self.readJson(self._games_folder, self._games_list_file)
         for game in game_list:
-            item = G.Game(game['name'], game['creator'], game['url'], game['json_name'])
+            item = Game.Game(game['name'], game['creator'], game['url'], game['json_name'])
             self._list_of_games.append(item)
 
     def add_game_to_list(self, game):

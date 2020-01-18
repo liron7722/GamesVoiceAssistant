@@ -3,8 +3,8 @@ import math
 import struct
 import time
 
+# const
 Threshold = 10
-
 SHORT_NORMALIZE = (1.0/32768.0)
 chunk = 1024
 FORMAT = pyaudio.paInt16
@@ -53,6 +53,7 @@ class Recorder:
 
             current = time.time()
             rec.append(data)
+        print('Recording ended, Listening ended')
         return rec
 
     def listen(self):

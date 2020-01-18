@@ -1,8 +1,8 @@
 # imports
 import os
 import dialogflow_v2 as dialogflow
-import Game as G
-import Recorder as R
+import Game
+from Recorder import Recorder
 from pydub.playback import play
 
 # Imports the Google Cloud client library
@@ -12,6 +12,9 @@ from google.cloud.speech import types
 from google.cloud import texttospeech
 from google.api_core.exceptions import InvalidArgument
 
+credential_path = "gamesvoiceassistant-63718bb5249e.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+
 class VoiceAssistant:
     property
     _name = None
@@ -20,7 +23,7 @@ class VoiceAssistant:
     _favFood = 'human voice'
     _creators = 'Liron Revah and Baruh Shalumov'
 
-    _recorder = R.Recorder()
+    _recorder = Recorder()
 
     _DIALOGFLOW_PROJECT_ID = 'gamesvoiceassistant'
     _DIALOGFLOW_LANGUAGE_CODE = 'en'
@@ -29,7 +32,6 @@ class VoiceAssistant:
     _session = None
 
     _language_code ='en-US'
-    _credential_path = "gamesvoiceassistant-63718bb5249e.json"
     _voice_gender = None
     _stt_client = None
     _tts_client = None
@@ -41,7 +43,6 @@ class VoiceAssistant:
             self._name = name
 
     def startConnection(self):
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = self._credential_path
         self._session_client = dialogflow.SessionsClient()
         self._session = self._session_client.session_path(self._DIALOGFLOW_PROJECT_ID, self._SESSION_ID)
         self._stt_client = speech.SpeechClient()
