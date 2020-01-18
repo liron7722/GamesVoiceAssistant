@@ -4,7 +4,6 @@ import VoiceAssistant as VA
 import GameCenter as GC
 
 
-
 class MyMain:
     property
     _GamesCenter = None
@@ -32,12 +31,11 @@ class MyMain:
         self._VoiceAssistant.__init__(game)
         stop = False
         while stop is not True:
-            commands_and_data = self._VoiceAssistant.listen()
+            commands_and_data, msg = self._VoiceAssistant.listen()
             for command in commands_and_data.keys():
                 data = commands_and_data[command]
                 result, stop = self._WebDriver.get_command(command, data)
-                self._VoiceAssistant.result_of_command(result)
-
+                self._VoiceAssistant.result_of_command(result, msg)
 
 
 def run():

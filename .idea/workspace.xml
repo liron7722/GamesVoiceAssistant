@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d07dabe-9fde-4a2c-a4d7-47893ee1456f" name="Default Changelist" comment="" />
+    <list default="true" id="0d07dabe-9fde-4a2c-a4d7-47893ee1456f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/VoiceAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/VoiceAssistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/WebDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebDriver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/games files/monopoly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/games files/monopoly.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/TODO List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/TODO List.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,11 +80,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578934837668" />
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1579254176250">
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1579352883277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="534" y="277" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1578931599092" />
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579254176250" />
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579352883277" />
     <state x="771" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578950123092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

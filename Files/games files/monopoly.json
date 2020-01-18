@@ -11,8 +11,8 @@
         "string_type": null,
         "string": null
     },
-    "start": {
-        "name": "start",
+    "start game": {
+        "name": "start game",
         "my_type": "click",
         "string_type": "xpath",
         "string": "/html/body/div[8]/div[10]/input"
@@ -42,6 +42,54 @@
         "string_type": "id",
         "string": "player1ai"
     },
+    "popup text": {
+        "name": "popup text",
+        "my_type": "read",
+        "string_type": "id",
+        "string": "popuptext"
+    },
+    "popup drag": {
+        "name": "popup drag",
+        "my_type": "drag",
+        "string_type": "id",
+        "string": "popupdrag"
+    },
+    "popup close": {
+        "name": "popup close",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "popupclose"
+    },
+    "stats text": {
+        "name": "stats text",
+        "my_type": "read",
+        "string_type": "id",
+        "string": "statstext"
+    },
+    "stats drag": {
+        "name": "stats drag",
+        "my_type": "drag",
+        "string_type": "id",
+        "string": "statsdrag"
+    },
+    "stand on cell": {
+        "name": "stand on cell",
+        "my_type": "stand",
+        "string_type": "id",
+        "string": "cell0positionholder"
+    },
+    "view stats": {
+        "name": "view stats",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "viewstats"
+    },
+    "close stats": {
+        "name": "close stats",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "statsclose"
+    },
 	"log": {
 		"name": "log",
 		"my_type": "read",
@@ -56,6 +104,12 @@
     },
     "roll dice": {
         "name": "roll dice",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "nextbutton"
+    },
+    "end turn": {
+        "name": "end turn",
         "my_type": "click",
         "string_type": "id",
         "string": "nextbutton"
@@ -84,29 +138,35 @@
         "string_type": "id",
         "string": "trade-menu-item"
     },
-    "view stats": {
-        "name": "view stats",
+    "show card": {
+        "name": "show card",
+        "my_type": "stand",
+        "string_type": "xpath",
+        "string": "/html/body/div[9]/table/tbody/tr[1]/td[1]/div[2]/div[2]/div/a"
+    },
+    "buy": {
+        "name": "buy",
+        "my_type": "click",
+        "string_type": "xpath",
+        "string": "/html/body/div[9]/table/tbody/tr[1]/td[1]/div[2]/div[2]/div/input"
+    },
+    "buildings": {
+        "name": "buildings",
         "my_type": "click",
         "string_type": "id",
-        "string": "viewstats"
+        "string": "buildings"
     },
-    "Turn status": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+    "buy house": {
+        "name": "buy house",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "buyhousebutton"
     },
-    "Show Card": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
-    },
-    "Card Info": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+    "mortgage": {
+        "name": "mortgage",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "mortgagebutton"
     },
 	"card name": {
 		"name": "card name",
@@ -127,69 +187,57 @@
 		"string": "cell1positionholder"
     },
     "Propose Trade": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "propose trade",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "proposetradebutton"
     },
     "Cancel Trade": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "cancel trade",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "canceltradebutton"
     },
     "Accept Trade": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "accept trade",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "accepttradebutton"
     },
     "Reject Trade": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "reject trade",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "rejecttradebutton"
     },
     "Trade partner": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "trade partner",
+        "my_type": "select",
+        "string_type": "id",
+        "string": "trade-rightp-name"
     },
     "Offer my Money money": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "trade-leftp-money",
+        "my_type": "send",
+        "string_type": "id",
+        "string": "trade-leftp-money"
     },
     "Offer partner Money money": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "trade-rightp-money",
+        "my_type": "send",
+        "string_type": "id",
+        "string": "trade-rightp-money"
     },
     "Offer my item": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
+        "name": "Offer my item",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "trade-leftp-property"
     },
     "Offer partner item": {
-        "name": "",
-        "my_type": "",
-        "string_type": "",
-        "string": ""
-    },
-	    "dice 1": {
-        "name": "dice 1",
-        "my_type": "read",
+        "name": "offer partner item",
+        "my_type": "click",
         "string_type": "id",
-        "string": "die0"
-    },
-	    "dice 2": {
-        "name": "dice 2",
-        "my_type": "read",
-        "string_type": "id",
-        "string": "die1"
+        "string": "trade-rightp-property"
     }
 }

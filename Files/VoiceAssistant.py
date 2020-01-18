@@ -1,5 +1,6 @@
 # imports
 import os
+import dialogflow_v2 as dialogflow
 import Game as G
 import Recorder as R
 from pydub.playback import play
@@ -9,7 +10,7 @@ from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
 from google.cloud import texttospeech
-
+from google.api_core.exceptions import InvalidArgument
 
 class VoiceAssistant:
     property
@@ -20,18 +21,33 @@ class VoiceAssistant:
     _creators = 'Liron Revah and Baruh Shalumov'
 
     _recorder = R.Recorder()
-    _voice_gender = None
+
+    _DIALOGFLOW_PROJECT_ID = 'gamesvoiceassistant'
+    _DIALOGFLOW_LANGUAGE_CODE = 'en'
+    _SESSION_ID = 'me'
+    _session_client = None
+    _session = None
+
     _language_code ='en-US'
     _credential_path = "gamesvoiceassistant-63718bb5249e.json"
-    _stt_client = speech.SpeechClient()
-    _tts_client = texttospeech.TextToSpeechClient()
+    _voice_gender = None
+    _stt_client = None
+    _tts_client = None
 
     def __init__(self, my_type, name):
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = self._credential_path
-
+        self.startConnection()
+        self.gender(my_type)
         if name is not None:
             self._name = name
 
+    def startConnection(self):
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = self._credential_path
+        self._session_client = dialogflow.SessionsClient()
+        self._session = self._session_client.session_path(self._DIALOGFLOW_PROJECT_ID, self._SESSION_ID)
+        self._stt_client = speech.SpeechClient()
+        self._tts_client = texttospeech.TextToSpeechClient()
+
+    def gender(self,my_type):
         if my_type is not None:
             # voice gender ("neutral", "FEMALE", "MALE")
             if my_type == 'va':
@@ -101,22 +117,53 @@ class VoiceAssistant:
     def listen(self):
         sound = None
         while sound is None:
-            sound = self._recorder.listen()
-            text = self.stt(self, sound)
+            text = self.recorder()
             if self._kw_heard:
-                commands_and_data = self.extract_info(text)
-                return commands_and_data
-            else:
-                if text is self._key_word:
+                return self.dialog_flow_function(text)
+            elif self._key_word in text:
                     self._kw_heard = True
 
-    def extract_info(self, text):
-        result = dict()
-        # TODO send to function that convert list of text to commands and data dict, return result
-        return result
+    def recorder(self):
+        sound = self._recorder.listen()
+        text = self.stt(self, sound)
+        return text
 
-    def result_of_command(self, result):
-        # TODO What should this class do with what happend with the command
+    def result_of_command(self, result, msg):
+        bad_massage = 'Sorry, could not run that command'
+        text = self.dialog_flow_function(msg)
+        if result:
+            self.tts(text)
+        else:
+            self.tts(bad_massage)
+        return True
+
+    def dialog_flow_function(self, text):
+
+        text_input = dialogflow.types.TextInput(text=text, language_code=self._DIALOGFLOW_LANGUAGE_CODE)
+        query_input = dialogflow.types.QueryInput(text=text_input)
+
+        try:
+            response = self._session_client.detect_intent(session=self._session, query_input=query_input)
+        except InvalidArgument:
+            raise
+
+        print("Query text:", response.query_result.query_text)
+        print("Detected intent:", response.query_result.intent.display_name)
+        print("Detected intent confidence:", response.query_result.intent_detection_confidence)
+        print("Fulfillment text:", response.query_result.fulfillment_text)
+
+        response_text = response.query_result.fulfillment_text
+        response_intent = response.query_result.intent.display_name
+
+        if '?' in response_text:
+            self.tts(response_text)
+            text = self.recorder()
+            return self.dialog_flow_function(text)
+
+        parameters = self.get_parameters(response)
+        return response_text, response_intent, parameters
+
+    def get_parameters(self, response):
+        # TODO get parameters from response and return dict
         return None
-
 

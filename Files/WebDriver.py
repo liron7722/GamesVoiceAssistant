@@ -1,14 +1,14 @@
 # imports
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 
 
 # class
 class MyWebDriver:
     _driver = None
-    _wait = 2
+    _wait = 1
     _page = None
     _web_elements = None
     _creator = 'Liron Revah and Baruh Shalumov'
@@ -58,6 +58,14 @@ class MyWebDriver:
         except:
             print('Could not find: '+ string)
             return None
+
+    # input - elem as web element
+    # output - return True if successful, False if not
+    # do - select the elem
+    def select_elem(self, elem, value):
+        select = Select(elem)
+        select.select_by_value(value)  # select_by_visible_text(value)
+        return True, 'Selected the item'
 
     # input - elem as web element
     # output - return True if successful, False if not
@@ -115,3 +123,10 @@ class MyWebDriver:
             return self.send_data_to_elem(elem, data)
         elif command_type is 'read':
             return self.read_elem_text(elem)
+
+    def alert_handle(self):
+        obj = self._driver.switch_to.alert
+        msg = obj.text
+        obj.accept()
+        self._driver.switch_to.default_content()
+        return True
