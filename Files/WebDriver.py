@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 # class
@@ -58,6 +59,14 @@ class MyWebDriver:
         except:
             print('Could not find: '+ string)
             return None
+
+    # input - elem as web element
+    # output - return True if successful, False if not
+    # do - hover the elem
+    def hover_elem(self, elem, value):
+        hover = ActionChains(self._driver).move_to_element(elem)
+        hover.perform()
+        return True, 'item is hovered'
 
     # input - elem as web element
     # output - return True if successful, False if not

@@ -1,6 +1,6 @@
 
 
-class WebElements():
+class WebElements:
     _name = None # string
     _type = None # button, info, textbox
     _string_type = None # id, xpath, etc..

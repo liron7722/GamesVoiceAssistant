@@ -1,15 +1,15 @@
 {
     "new game": {
         "name": "new game",
-        "my_type": null,
-        "string_type": null,
-        "string": null
+        "my_type": "",
+        "string_type": "",
+        "string": ""
     },
     "exit": {
         "name": "exit",
-        "my_type": null,
-        "string_type": null,
-        "string": null
+        "my_type": "",
+        "string_type": "",
+        "string": ""
     },
     "start game": {
         "name": "start game",
@@ -32,13 +32,13 @@
     },
     "player color": {
         "name": "player color",
-        "my_type": "send",
+        "my_type": "select",
         "string_type": "id",
         "string": "player1color"
     },
     "player type": {
         "name": "player type",
-        "my_type": "pick",
+        "my_type": "select",
         "string_type": "id",
         "string": "player1ai"
     },
@@ -186,55 +186,55 @@
 		"string_type": "id",
 		"string": "cell1positionholder"
     },
-    "Propose Trade": {
+    "propose trade": {
         "name": "propose trade",
         "my_type": "click",
         "string_type": "id",
         "string": "proposetradebutton"
     },
-    "Cancel Trade": {
+    "cancel trade": {
         "name": "cancel trade",
         "my_type": "click",
         "string_type": "id",
         "string": "canceltradebutton"
     },
-    "Accept Trade": {
+    "accept trade": {
         "name": "accept trade",
         "my_type": "click",
         "string_type": "id",
         "string": "accepttradebutton"
     },
-    "Reject Trade": {
+    "reject trade": {
         "name": "reject trade",
         "my_type": "click",
         "string_type": "id",
         "string": "rejecttradebutton"
     },
-    "Trade partner": {
+    "trade partner": {
         "name": "trade partner",
         "my_type": "select",
         "string_type": "id",
         "string": "trade-rightp-name"
     },
-    "Offer my Money money": {
+    "offer my money": {
         "name": "trade-leftp-money",
         "my_type": "send",
         "string_type": "id",
         "string": "trade-leftp-money"
     },
-    "Offer partner Money money": {
+    "offer partner money": {
         "name": "trade-rightp-money",
         "my_type": "send",
         "string_type": "id",
         "string": "trade-rightp-money"
     },
-    "Offer my item": {
+    "offer my item": {
         "name": "Offer my item",
         "my_type": "click",
         "string_type": "id",
         "string": "trade-leftp-property"
     },
-    "Offer partner item": {
+    "offer partner item": {
         "name": "offer partner item",
         "my_type": "click",
         "string_type": "id",

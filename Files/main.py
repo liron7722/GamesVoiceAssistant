@@ -5,15 +5,12 @@ import GameCenter as GC
 
 
 class MyMain:
-    property
     _GamesCenter = None
     _VoiceAssistant = None
     _WebDriver = None
 
     def __init__(self):
-        self._GamesCenter = GC.GameCenter
-        self._VoiceAssistant = VA.VoiceAssistant
-        self._WebDriver = WD.MyWebDriver
+        self.run()
 
     def close_all(self):
         if self._WebDriver.close():
@@ -25,10 +22,11 @@ class MyMain:
             print('Couldnt close Web Driver')
 
     def run(self):
-        game_name = 'monopoly'
+        game_name = 'Monopoly'
+        print('Staring Game: '+ game_name)
         game = self._GamesCenter.getGame(game_name)
-        self._WebDriver.__init__(game)
-        self._VoiceAssistant.__init__(game)
+        self._WebDriver(game)
+        self._VoiceAssistant(game, 'va', None)
         stop = False
         while stop is not True:
             commands_and_data, msg = self._VoiceAssistant.listen()
@@ -36,11 +34,8 @@ class MyMain:
                 data = commands_and_data[command]
                 result, stop = self._WebDriver.get_command(command, data)
                 self._VoiceAssistant.result_of_command(result, msg)
+                # TODO make if got log command do read log
 
-
-def run():
-    A = MyMain()
-    A.run()
 
 
 

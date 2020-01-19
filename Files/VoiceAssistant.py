@@ -3,7 +3,6 @@ import os
 import dialogflow_v2 as dialogflow
 import Game
 from Recorder import Recorder
-from pydub.playback import play
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -14,6 +13,7 @@ from google.api_core.exceptions import InvalidArgument
 
 credential_path = "gamesvoiceassistant-63718bb5249e.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+
 
 class VoiceAssistant:
     property
@@ -36,7 +36,7 @@ class VoiceAssistant:
     _stt_client = None
     _tts_client = None
 
-    def __init__(self, my_type, name):
+    def __init__(self, game, my_type, name):
         self.startConnection()
         self.gender(my_type)
         if name is not None:
