@@ -3010,5 +3010,31 @@ window.onload = function() {
 
 	$("#trade-menu-item").click(game.trade);
 
+	function getTextFromFile(file){
+        var allText;
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    allText = rawFile.responseText;
+                }
+            }
+        }
+        rawFile.send(null);
+        return allText;
+	}
 
+	$("#frontgamerules").click(function() {
+	    var rules_text = getTextFromFile('rules.txt')
+		popup("<img src='images/chance_icon.png' style='height: 50px; width: 53px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Game Rules:</div><div style='text-align: justify;'>" + rules_text + "</div>")
+	});
+
+	$("#backgamerules").click(function() {
+	    var rules_text = getTextFromFile('rules.txt')
+		popup("<img src='images/chance_icon.png' style='height: 50px; width: 53px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Game Rules:</div><div style='text-align: justify;'>" + rules_text + "</div>")
+	});
 };

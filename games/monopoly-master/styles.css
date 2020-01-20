@@ -1,5 +1,5 @@
 body {
-	background: #FFFFFF;
+	background: #ffffff;
 	margin: 0px;
 	min-width: 1075px;
 }
@@ -14,6 +14,15 @@ td {
 #setup {
 	display: none;
 	margin: 15px;
+}
+
+ul {
+    padding: 0;
+}
+
+li{
+  list-style-position: inside;
+  padding: 1px;
 }
 
 #moneybar {
@@ -517,6 +526,35 @@ td {
 #enlarge-wrap {
 	border: none;
 	z-index: 0;
+}
+
+#player1name {width: 12%;}
+#player2name {width: 12%;}
+#player3name {width: 12%;}
+#player4name {width: 12%;}
+#player5name {width: 12%;}
+#player6name {width: 12%;}
+#player7name {width: 12%;}
+#player8name {width: 12%;}
+
+.container-name div {
+    display: inline-block;
+ }
+
+.led-green {
+  width: 24px;
+  height: 24px;
+  background-color: #ABFF00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+
+.led-red {
+  width: 24px;
+  height: 24px;
+  background-color: #F00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
 }
 
 .menu-item:hover {
