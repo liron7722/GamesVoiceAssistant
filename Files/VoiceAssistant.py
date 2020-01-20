@@ -1,7 +1,9 @@
 # imports
+import io
 import os
 import dialogflow_v2 as dialogflow
 from rec import Recorder
+import simpleaudio as sa
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -43,8 +45,6 @@ class VoiceAssistant:
     def startConnection(self):
         self._session_client = dialogflow.SessionsClient()
         self._session = self._session_client.session_path(self._DIALOGFLOW_PROJECT_ID, self._SESSION_ID)
-        self._stt_client = speech.SpeechClient()
-        self._tts_client = texttospeech.TextToSpeechClient()
 
     def gender(self,my_type):
         if my_type is not None:
@@ -60,77 +60,90 @@ class VoiceAssistant:
 
     def close(self):
         massage = 'Goodbye'
-        self.tts(massage)
+        self.ack(massage)
         return True
 
     def sayName(self):
         massage = 'My name is ' + self._name
-        return self.tts(massage)
+        return self.ack(massage)
 
     def sayFavFood(self):
         massage = 'My favorite food is ' + self._favFood
-        return self.tts(massage)
+        return self.ack(massage)
 
     def sayCreatorsName(self):
         massage = 'My Creators are ' + self._creators
-        return self.tts(massage)
+        return self.ack(massage)
 
     def listen(self):
         text = None
         while text is None:
-            sound = self._recorder.listen()
-            text = self.stt(sound)
+            self._recorder.listen()
+            text = self.stt()
             if self._kw_heard:
                 return self.dialog_flow_function(text)
             elif self._key_word in text:
                 hello_text = 'Hello everybody'
+                self.ack(hello_text)
                 self._kw_heard = True
-                print(hello_text)
-                self.tts(hello_text)
 
-    def stt(self, sound):
+    @staticmethod
+    def stt():
+        client = speech.SpeechClient()
         string = []
-        audio = types.RecognitionAudio(content=sound)
+        # The name of the audio file to transcribe
+        file_name = os.path.join(os.path.dirname(__file__), 'RECORDING.wav')
+
+        # Loads the audio into memory
+        with io.open(file_name, 'rb') as audio_file:
+            content = audio_file.read()
+            audio = types.RecognitionAudio(content=content)
 
         config = types.RecognitionConfig(
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=16000,
-            language_code=self._language_code)
+            language_code='en-US')
 
         # Detects speech in the audio file
-        response = self._stt_client.recognize(config, audio)
+        response = client.recognize(config, audio)
 
         for result in response.results:
-             string.append(result.alternatives[0].transcript)
+            string = result.alternatives[0].transcript
 
         return string
 
     def tts(self, massage):
+        client = texttospeech.TextToSpeechClient()
         # Set the text input to be synthesized
-        synthesis_input = texttospeech.types.SynthesisInput(text = massage)
+        synthesis_input = texttospeech.types.SynthesisInput(text=massage)
 
         # Build the voice request, select the language code ("en-US") and the ssml
         voice = texttospeech.types.VoiceSelectionParams(
-            language_code = self._language_code,
-            ssml_gender = self._voice_gender)
+            language_code=self._language_code,
+            ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
 
         # Select the type of audio file you want returned
         audio_config = texttospeech.types.AudioConfig(
-            audio_encoding = texttospeech.enums.AudioEncoding.LINEAR16)
+            audio_encoding=texttospeech.enums.AudioEncoding.LINEAR16)
 
         # Perform the text-to-speech request on the text input with the selected
         # voice parameters and audio file type
-        response = self._tts_client.synthesize_speech(synthesis_input, voice, audio_config)
+        response = client.synthesize_speech(synthesis_input, voice, audio_config)
 
+
+        self.play(self,response.audio_content)
         # play(response.audio_content) # should i use this
-        play_obj = response.audio_content.play()
-        play_obj.wait_done()  # Wait until sound has finished playing
+        # The response's audio_content is binary.
+        with open('output.mp3', 'wb') as out:
+            # Write the response to the output file.
+            out.write(response.audio_content)
+            print('Audio content written to file "output.mp3"')
 
     def result_of_command(self, result, msg):
         bad_massage = 'Sorry, could not run that command'
         text = self.dialog_flow_function(msg)
         if result:
-            self.tts(text)
+            self.ack(text)
         else:
             self.tts(bad_massage)
         return True
@@ -154,7 +167,7 @@ class VoiceAssistant:
         response_intent = response.query_result.intent.display_name
 
         if '?' in response_text:
-            self.tts(response_text)
+            self.ack(response_text)
             return self.listen()
 
         parameters = self.get_parameters(response)
@@ -164,3 +177,13 @@ class VoiceAssistant:
         # TODO get parameters from response and return dict
         return None
 
+    def ack(self, text):
+        print(text)
+        self.tts(text)
+
+    def play(self, sound):
+        fs = 24000  # 44100 samples per second
+        # Start playback
+        play_obj = sa.play_buffer(sound, 1, 2, fs)
+        # Wait for playback to finish before exiting
+        play_obj.wait_done()

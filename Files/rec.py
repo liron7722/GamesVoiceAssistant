@@ -69,6 +69,7 @@ class Recorder:
         end = time.time() + TIMEOUT_LENGTH
 
         while current <= end:
+            flag = True
             data=self.stream.read(CHUNK)
             data_chunk=array('h',data)
             vol = max(data_chunk)
@@ -76,10 +77,14 @@ class Recorder:
             if vol >= Volume_Limit:
                 frames.append(data)
                 end = time.time() + TIMEOUT_LENGTH
+                flag = True
             current = time.time()
 
             if current > (end - (TIMEOUT_LENGTH / 2)):
-                print("Detecting Silence")
+                if flag:
+                    print("Detecting Silence, going to stop record")
+                    flag = False
+
         return frames
 
     def listen(self):
@@ -92,11 +97,11 @@ class Recorder:
             if rms_val > Threshold:
                 break
 
-        # end of recording
+        print('Recording beginning')
         frames = self.record()
         self.close_stream()
         print('Recording ended, Listening ended')
 
         # writing to file
         self.save_to_file(frames)
-        return self.get_wave_obj()
+        #return self.get_wave_obj()
