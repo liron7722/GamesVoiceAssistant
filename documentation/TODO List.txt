@@ -1,4 +1,3 @@
-- add proper intent in dialogflow for each button
 - get parameters from dialogflow response
 - read log after execute a command and saying response
 - cheak bugs

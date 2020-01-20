@@ -168,6 +168,18 @@
         "string_type": "id",
         "string": "mortgagebutton"
     },
+    "yes": {
+        "name": "yes",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "popupyes"
+    },
+    "no": {
+        "name": "no",
+        "my_type": "click",
+        "string_type": "id",
+        "string": "popupno"
+    },
 	"card name": {
 		"name": "card name",
 		"my_type": "read",
