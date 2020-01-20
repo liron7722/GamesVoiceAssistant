@@ -10,6 +10,7 @@ class MyMain:
     _WebDriver = None
 
     def __init__(self):
+        self._GamesCenter = GC.GameCenter()
         self.run()
 
     def close_all(self):
@@ -25,16 +26,21 @@ class MyMain:
         game_name = 'Monopoly'
         print('Staring Game: '+ game_name)
         game = self._GamesCenter.getGame(game_name)
-        self._WebDriver(game)
-        self._VoiceAssistant(game, 'va', None)
-        stop = False
-        while stop is not True:
-            commands_and_data, msg = self._VoiceAssistant.listen()
-            for command in commands_and_data.keys():
-                data = commands_and_data[command]
-                result, stop = self._WebDriver.get_command(command, data)
-                self._VoiceAssistant.result_of_command(result, msg)
-                # TODO make if got log command do read log
+        if game is not None:
+            self._WebDriver = WD.MyWebDriver(game)
+            self._VoiceAssistant = VA.VoiceAssistant(game, 'va', None)
+            stop = False
+            while stop is not True:
+                commands_and_data, msg = self._VoiceAssistant.listen()
+                for command in commands_and_data.keys():
+                    data = commands_and_data[command]
+                    result, stop = self._WebDriver.get_command(command, data)
+                    self._VoiceAssistant.result_of_command(result, msg)
+                    # TODO make if got log command do read log
+        else:
+            print('Didnt Got the game')
+
+MyMain()
 
 
 

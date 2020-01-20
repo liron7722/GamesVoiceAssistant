@@ -1,8 +1,7 @@
 # imports
 import os
 import dialogflow_v2 as dialogflow
-import Game
-from Recorder import Recorder
+from rec import Recorder
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -16,7 +15,6 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 
 class VoiceAssistant:
-    property
     _name = None
     _key_word = None
     _kw_heard = False
@@ -53,7 +51,7 @@ class VoiceAssistant:
             # voice gender ("neutral", "FEMALE", "MALE")
             if my_type == 'va':
                 self._name = 'Daisy'
-                self._key_word = 'hello ' + self._name
+                self._key_word = 'Hello ' + self._name
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.FEMALE
             elif my_type == 'opponent':
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.NEUTRAL
@@ -66,7 +64,7 @@ class VoiceAssistant:
         return True
 
     def sayName(self):
-        massage = 'My name is ' + self._Name
+        massage = 'My name is ' + self._name
         return self.tts(massage)
 
     def sayFavFood(self):
@@ -77,6 +75,19 @@ class VoiceAssistant:
         massage = 'My Creators are ' + self._creators
         return self.tts(massage)
 
+    def listen(self):
+        text = None
+        while text is None:
+            sound = self._recorder.listen()
+            text = self.stt(sound)
+            if self._kw_heard:
+                return self.dialog_flow_function(text)
+            elif self._key_word in text:
+                hello_text = 'Hello everybody'
+                self._kw_heard = True
+                print(hello_text)
+                self.tts(hello_text)
+
     def stt(self, sound):
         string = []
         audio = types.RecognitionAudio(content=sound)
@@ -84,7 +95,7 @@ class VoiceAssistant:
         config = types.RecognitionConfig(
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=16000,
-            language_code = self._language_code)
+            language_code=self._language_code)
 
         # Detects speech in the audio file
         response = self._stt_client.recognize(config, audio)
@@ -115,20 +126,6 @@ class VoiceAssistant:
         play_obj = response.audio_content.play()
         play_obj.wait_done()  # Wait until sound has finished playing
 
-    def listen(self):
-        sound = None
-        while sound is None:
-            text = self.recorder()
-            if self._kw_heard:
-                return self.dialog_flow_function(text)
-            elif self._key_word in text:
-                    self._kw_heard = True
-
-    def recorder(self):
-        sound = self._recorder.listen()
-        text = self.stt(self, sound)
-        return text
-
     def result_of_command(self, result, msg):
         bad_massage = 'Sorry, could not run that command'
         text = self.dialog_flow_function(msg)
@@ -158,8 +155,7 @@ class VoiceAssistant:
 
         if '?' in response_text:
             self.tts(response_text)
-            text = self.recorder()
-            return self.dialog_flow_function(text)
+            return self.listen()
 
         parameters = self.get_parameters(response)
         return response_text, response_intent, parameters
