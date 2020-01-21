@@ -739,7 +739,6 @@ function Game() {
 			player[turn].AI.alertList = "";
 			game.next();
 		}
-
 	};
 
 	this.acceptTrade = function(tradeObj) {
@@ -3028,13 +3027,79 @@ window.onload = function() {
         return allText;
 	}
 
+	function mypopup(HTML, action, option) {
+	document.getElementById("popuptext").innerHTML = HTML;
+	document.getElementById("popup").style.width = "1000px";
+	document.getElementById("popup").style.top = "0px";
+	document.getElementById("popup").style.left = "0px";
+
+	if (!option && typeof action === "string") {
+		option = action;
+	}
+
+	option = option ? option.toLowerCase() : "";
+
+	if (typeof action !== "function") {
+		action = null;
+	}
+
+	// Yes/No
+	if (option === "yes/no") {
+		document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"Yes\" id=\"popupyes\" /><input type=\"button\" value=\"No\" id=\"popupno\" /></div>";
+
+		$("#popupyes, #popupno").on("click", function() {
+			$("#popupwrap").hide();
+			$("#popupbackground").fadeOut(400);
+		});
+
+		$("#popupyes").on("click", action);
+
+	// Ok
+	} else if (option !== "blank") {
+		$("#popuptext").append("<div><input type='button' value='OK' id='popupclose' /></div>");
+		$("#popupclose").focus();
+
+		$("#popupclose").on("click", function() {
+			$("#popupwrap").hide();
+			$("#popupbackground").fadeOut(400);
+		}).on("click", action);
+
+	}
+
+	// Show using animation.
+	$("#popupbackground").fadeIn(400, function() {
+		$("#popupwrap").show();
+	});
+
+}
+
 	$("#frontgamerules").click(function() {
 	    var rules_text = getTextFromFile('rules.txt')
-		popup("<img src='images/chance_icon.png' style='height: 50px; width: 53px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Game Rules:</div><div style='text-align: justify;'>" + rules_text + "</div>")
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Game Rules</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
 
 	$("#backgamerules").click(function() {
 	    var rules_text = getTextFromFile('rules.txt')
-		popup("<img src='images/chance_icon.png' style='height: 50px; width: 53px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Game Rules:</div><div style='text-align: justify;'>" + rules_text + "</div>")
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Game Rules</div><div style='text-align: justify;'>" + rules_text + "</div>")
+	});
+
+	$("#frontvoicecommands").click(function() {
+	    var rules_text = getTextFromFile('voice_commands.txt')
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
+	});
+
+	$("#backvoicecommands").click(function() {
+	    var rules_text = getTextFromFile('voice_commands.txt')
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
+	});
+
+		$("#frontexplanation").click(function() {
+	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
+	});
+
+	$("#backexplanation").click(function() {
+	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
 };

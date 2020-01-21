@@ -1,0 +1,4 @@
+Red - Daisy is off
+Green - Daisy is on
+Orange - Daisy is record
+Yellow - Daisy is lisetn
