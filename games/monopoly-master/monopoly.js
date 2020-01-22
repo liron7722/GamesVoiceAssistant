@@ -3085,21 +3085,21 @@ window.onload = function() {
 
 	$("#frontvoicecommands").click(function() {
 	    var rules_text = getTextFromFile('voice_commands.txt')
-		mypopup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
+		popup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
 
 	$("#backvoicecommands").click(function() {
 	    var rules_text = getTextFromFile('voice_commands.txt')
-		mypopup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
+		popup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
 
 		$("#frontexplanation").click(function() {
 	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
-		mypopup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
+		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
 
 	$("#backexplanation").click(function() {
 	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
-		mypopup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
+		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
 };
