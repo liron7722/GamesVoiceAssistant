@@ -5,8 +5,6 @@
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="classicedition.js"></script>
-		<!-- Comment out the previous line and uncomment the next one to enable the New York City Edition -->
-		<!-- <script type="text/javascript" src="newyorkcityedition.js"></script> -->
 		<script type="text/javascript" src="ai.js"></script>
 		<script type="text/javascript" src="monopoly.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles.css" />
@@ -229,33 +227,47 @@
 							<div>$<span id="p7money">1500</span></div>
 						</td>
 					</tr>
-					<tr id="moneybarrow8">
+
+					<tr id="moneybarrow8" class="money-bar-row">
+						<td class="moneybararrowcell"><img src="images/arrow.png" id="p8arrow" class="money-bar-arrow" alt=">" /></td>
+						<td id="p8moneybar" class="moneybarcell">
+							<div><span id="p8moneyname" >Player 7</span>:</div>
+							<div>$<span id="p8money">1500</span></div>
+						</td>
+					</tr>
+
+					<tr id="moneybarrow9">
 						<td style="border: none;" class="moneybararrowcell">&nbsp;</td>
 						<td style="border: none;">
 							<input type="button" id="viewstats" value="View Stats" title="View a pop-up window that shows a list of each player's properties."  style="font-size : 16px; height: 30px; width: 180px;"/>
 						</td>
 					</tr>
-					<tr id="moneybarrow9">
+					<tr id="moneybarrow10">
 						<td style="border: none;" class="moneybararrowcell">&nbsp;</td>
 						<td style="border: none;">
 							<input type="button" id="backgamerules" value="Game Rules" title="View a pop-up window that shows a rules of game."  style="font-size : 16px; height: 30px; width: 180px;"/>
 						</td>
 					</tr>
 
-					<tr id="moneybarrow10">
+					<tr id="moneybarrow11">
 						<td style="border: none;" class="moneybararrowcell">&nbsp;</td>
 						<td style="border: none;">
 							<input type="button" id="backvoicecommands" value="Voice Commands" title="View a pop-up window that shows a rules of game." style="font-size : 16px; height: 30px; width: 180px;"/>
 						</td>
 					</tr>
 
-					<tr id="moneybarrow11">
+					<tr id="moneybarrow12">
 						<td style="border: none;" class="moneybararrowcell">&nbsp;</td>
 						<td style="border: none;">
 							<input type="button" id="backexplanation" value="explanation of the leds" title="View a pop-up window that shows a rules of game." style="font-size : 16px; height: 30px; width: 180px;"/>
 						</td>
 					</tr>
 				</table>
+				<br>
+				<p id="statusparg">
+					<div id="backassistant"><b>Voice assistant status</b></div>
+					<div id='led2'></div>
+				</p>
 			</div>
 		</div>
 
@@ -287,7 +299,7 @@
 							</h2>
 							<h2>
 								<div class="status-string"><b>Voice assistant status:</b></div>
-								<div id='led' class="led-indication"></div>
+								<div id='led1' class="led-indication"></div>
 							</h2>
 							<br><br>
 							<p>Feel free to contact him at game if you'd like for him to work for you!</p>

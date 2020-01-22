@@ -1,4 +1,5 @@
-Red - Daisy is off
-Green - Daisy is on
-Orange - Daisy is record
-Yellow - Daisy is lisetn
+<p> <b>Red</b>, Daisy is off </p>
+<p> <b>Green</b>, Daisy is on </p>
+<p> <b>Orange</b>, Daisy is record </p>
+<p> <b>Yellow</b>, Daisy is lisetn </p>
+<p> <b>Blue</b>, Daisy is speak </p>

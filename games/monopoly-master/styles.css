@@ -610,7 +610,6 @@ li{
 #deed-name {
 	font-size: 15px;
 	font-weight: bold;
-
 }
 
 #deed-table {
@@ -670,6 +669,41 @@ li{
     margin-top: 0%;
 }
 
+#backassistant{
+    color: black;
+	text-align: center;
+	font-family: 'Lato', Helvetica, arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+#led2{
+  margin: 2px 100px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  /*Red*/
+  background-color: #F00;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px;
+
+  /*Green*/
+  /*background-color: #ABFF00;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px;*/
+
+   /*Orange*/
+  /*background-color: #ff9900;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #cc6600 0 -1px 9px;*/
+
+  /*Yellow*/
+  /*background-color: #FF0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px;*/
+
+  /*Blue*/
+  /*background-color: #24E0FF;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px;*/
+}
+
 .status-string  {
   float: left;
   text-align: right;
@@ -684,10 +718,27 @@ li{
 
   width: 40px;
   height: 40px;
-  background-color: #F00; /*#ABFF00;*/
   border-radius: 50%;
-  /*box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px;*/
+
+  /*Red*/
+  background-color: #F00;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px;
+
+  /*Green*/
+  /*background-color: #ABFF00;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px;*/
+
+   /*Orange*/
+  /*background-color: #ff9900;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #cc6600 0 -1px 9px;*/
+
+  /*Yellow*/
+  /*background-color: #FF0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px;*/
+
+  /*Blue*/
+  /*background-color: #24E0FF;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px;*/
 }
 
 .select-number-string{
@@ -970,53 +1021,32 @@ li{
 
 .board-top .cell-owner {
 	background-image: url("images/hori-bar.png");
-
 	height: 15px;
 	left: 0px;
-
-
-
 	top: -25px;
 	width: 72px;
-
 }
 
 .board-bottom .cell-owner {
 	background-image: url("images/hori-bar.png");
 	bottom: -25px;
-
 	height: 15px;
-
-
-
-
 	left: 0px;
 	width: 72px;
 }
 
 .board-left .cell-owner {
 	background-image: url("images/vert-bar.png");
-
 	height: 68px;
 	left: -25px;
-
-
-
 	top: 0px;
 	width: 15px;
-
 }
 
 .board-right .cell-owner {
 	background-image: url("images/vert-bar.png");
-
 	height: 68px;
 	right: -25px;
-
-
-
 	top: 0px;
 	width: 15px;
-
 }
-
