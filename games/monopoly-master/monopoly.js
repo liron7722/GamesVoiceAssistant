@@ -3102,4 +3102,5 @@ window.onload = function() {
 	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
 		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
 	});
+
 };
