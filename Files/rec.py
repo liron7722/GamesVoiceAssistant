@@ -5,6 +5,7 @@ import time
 import math
 import struct
 import simpleaudio as sa
+from extra import change_status
 
 FORMAT=pyaudio.paInt16
 CHANNELS = 1  # 2
@@ -14,7 +15,7 @@ Threshold = 10
 SHORT_NORMALIZE = (1.0/32768.0)
 swidth = 2
 Volume_Limit = 500  # 750
-TIMEOUT_LENGTH = 0.5  # 1
+TIMEOUT_LENGTH = 0.75  # 1
 FILE_NAME = "RECORDING.wav"
 
 
@@ -37,16 +38,17 @@ class Recorder:
         wavfile.setnchannels(CHANNELS)
         wavfile.setsampwidth(self.audio.get_sample_size(FORMAT))
         wavfile.setframerate(RATE)
-        wavfile.writeframes(b''.join(frames))#append frames recorded to file
+        if frames is not None:
+            wavfile.writeframes(b''.join(frames))#append frames recorded to file
         wavfile.close()
 
     @staticmethod
-    def get_wave_obj():
-        wave_obj = sa.WaveObject.from_wave_file(FILE_NAME)
+    def get_wave_obj(file_name):
+        wave_obj = sa.WaveObject.from_wave_file(file_name)
         return wave_obj
 
-    def play(self):
-        play_obj = self.get_wave_obj().play()
+    def play(self, file_name):
+        play_obj = self.get_wave_obj(file_name).play()
         play_obj.wait_done()  # Wait until sound has finished playing
 
     @staticmethod
@@ -65,43 +67,46 @@ class Recorder:
 
     def record(self):
         frames = []
-        current = time.time()
-        end = time.time() + TIMEOUT_LENGTH
-
-        while current <= end:
-            flag = True
-            data=self.stream.read(CHUNK)
-            data_chunk=array('h',data)
-            vol = max(data_chunk)
-
-            if vol >= Volume_Limit:
-                frames.append(data)
-                end = time.time() + TIMEOUT_LENGTH
-                flag = True
+        while len(frames) < 1:
             current = time.time()
+            end = time.time() + TIMEOUT_LENGTH
 
-            if current > (end - (TIMEOUT_LENGTH / 2)):
-                if flag:
-                    print("Detecting Silence, going to stop record")
-                    flag = False
+            while current <= end:
+                flag = True
+                data=self.stream.read(CHUNK)
+                data_chunk=array('h',data)
+                vol = max(data_chunk)
+
+                if vol >= Volume_Limit:
+                    frames.append(data)
+                    end = time.time() + TIMEOUT_LENGTH
+                    flag = True
+                current = time.time()
+
+                if current > (end - (TIMEOUT_LENGTH / 2)):
+                    if flag:
+                        flag = False
+                        print("Detecting Silence, going to stop")
 
         return frames
 
     def listen(self):
+        change_status('yellow')
         self.open_stream()
         print('Listening beginning')
 
-        while True:
+        while False:
             input = self.stream.read(CHUNK)
             rms_val = self.rms(input)
             if rms_val > Threshold:
                 break
 
         print('Recording beginning')
+        change_status('orange')
         frames = self.record()
         self.close_stream()
-        print('Recording ended, Listening ended')
 
+        print('Recording ended, Listening ended')
+        change_status('green')
         # writing to file
         self.save_to_file(frames)
-        #return self.get_wave_obj()

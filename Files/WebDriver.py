@@ -34,36 +34,37 @@ class MyWebDriver:
     # do - if called refresh page of the browser
     def new_game(self):
         self._driver.refresh()
-        return True
+        return True, False
 
     # output - return True if successful
     # do - close the browser
     def close(self):
         self._driver.quit()
-        return True
+        return True, False
 
     # input - type as string, string as string
     # output - return element if found in '_wait' seconds, None otherwise
     def find_elem(self, elem_type, string):
         driver = self._driver
         delay = self._wait
-        try:
-            if elem_type is 'xpath':
-                WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, string)))
-                elem = driver.find_element_by_xpath(string)
-            elif elem_type is 'id':
-                WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, string)))
-                elem = driver.find_element_by_id(string)
+        elem=None
+        #try:
+        if elem_type is 'xpath':
+            WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, string)))
+            elem = driver.find_element_by_xpath(string)
+        elif elem_type is 'id':
+            WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, string)))
+            elem = driver.find_element_by_id(string)
 
-            return elem
-        except:
-            print('Could not find: '+ string)
-            return None
+        return elem
+        #except:
+        #    print('Could not find: '+ string)
+         #   return None
 
     # input - elem as web element
     # output - return True if successful, False if not
     # do - hover the elem
-    def hover_elem(self, elem, value):
+    def hover_elem(self, elem):
         hover = ActionChains(self._driver).move_to_element(elem)
         hover.perform()
         return True, 'item is hovered'
@@ -71,69 +72,81 @@ class MyWebDriver:
     # input - elem as web element
     # output - return True if successful, False if not
     # do - select the elem
-    def select_elem(self, elem, value):
+    @staticmethod
+    def select_elem(elem, value):
         select = Select(elem)
-        select.select_by_value(value)  # select_by_visible_text(value)
-        return True, 'Selected the item'
+        select.select_by_visible_text(str(value))
+        return True, False
 
     # input - elem as web element
     # output - return True if successful, False if not
     # do - click the elem
-    def click_elem(self, elem):
+    @staticmethod
+    def click_elem(elem):
         elem.click()
-        return True, 'Clicked the item'
+        return True, False
 
     # input - elem as web element, data as string
     # output - return True if successful, False if not
     # do - send the elem the data
-    def send_data_to_elem(self, elem, data):
+    @staticmethod
+    def send_data_to_elem(elem, data):
+        elem.clear()
         elem.send_keys(data)
-        return True, 'Inserted data'
+        return True, False
 
     # input - elem as web element, data as string
     # output - return True if successful, False if not
     # do - send the elem the data
-    def read_elem_text(self, elem):
-        text = elem.get_attribute('textContent') # should i use this?
-        # text = elem.text # should i use this?
+    @staticmethod
+    def read_elem_text(elem):
+        text = elem.text()
         if text is not None:
-            return True, text
+            return True, False # TODO send text
         else:
-            return False, None
+            return None, False
 
     # input - command_string as string, data as string
     # output - return True + None if successful, False if not + massage
     # do - check if command is viable, if yes run it
-    def get_command(self, command_string, data):
-        exit_key_words = ['close game', 'i want to quit', 'quit']
-        new_game_key_words = ['new game', 'refresh', 'restart']
+    def get_command(self, command_string, data=None):
+        general_commands = {'exit': self.new_game(),'new game': self.close()}
+        if command_string in general_commands.keys():
+            return general_commands[command_string]
 
-        if command_string in new_game_key_words:
-            return self.new_game()
-        elif command_string in exit_key_words:
-            return self.close()
         else:
             if command_string in self._web_elements.keys():
                 return self.run_command(self._web_elements[command_string], data)
-            return False, 'This command is not viable'
+            return True, False
 
     # input - command_string as list of strings, data as string
     # output - return True + None if successful, False if not + massage
     # do - send data to be checked if viable, if yes lunch command
-    def run_command(self, web_elem, data):
+    def run_command(self, web_elem, data=None):
         name, command_type, string_type, string = web_elem.get_data()
-        return self.execute_command(self, command_type, string_type, string, data)
+        if data is not None:
+            if 'number' in data.keys():
+                string = string.replace('1', str(int(data['number'])))
+            elif 'label' in data.keys():
+                string = string.replace('buy', data['label'])
+            if 'data' in data.keys():
+                data = data['data']
+        return self.execute_command(command_type, string_type, string, data)
 
-    def execute_command(self, command_type, string_type, string, data):
+    def execute_command(self, command_type, string_type, string, data=None):
         elem = self.find_elem(string_type, string)
-        if command_type is 'click':
-            return self.click_elem(elem)
-        elif command_type is 'send':
-            return self.send_data_to_elem(elem, data)
-        elif command_type is 'read':
-            return self.read_elem_text(elem)
-        elif command_type is 'select':
-            return self.select_elem(elem, data)
+        if elem is not None:
+            if command_type is 'click':
+                return self.click_elem(elem)
+            elif command_type is 'send':
+                return self.send_data_to_elem(elem, data)
+            elif command_type is 'read':
+                return self.read_elem_text(elem)
+            elif command_type is 'select':
+                return self.select_elem(elem, data)
+            elif command_type is 'hover':
+                return self.hover_elem(elem)
+        return 'Could not find web element', False
 
     def alert_handle(self):
         obj = self._driver.switch_to.alert

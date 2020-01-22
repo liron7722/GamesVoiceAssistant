@@ -1,4 +1,5 @@
-- get parameters from dialogflow response
 - read log after execute a command and saying response
+-TODO fix what happen if webdriver fail at task  
+-fix bug when game crash if item wasnt found
 - cheak bugs
 - do class diagram for class presentation 

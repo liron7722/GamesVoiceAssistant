@@ -18,7 +18,7 @@ class Game:
         self._path = path
         self.load_web_elements()
 
-    def get_info(self, string):
+    def get_info(self, string=None):
         if string is None:
             return {'name':self._name, 'creator':self._creator, 'path':self._url, 'web_elem':self._web_elements}
         elif string is 'name':

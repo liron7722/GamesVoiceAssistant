@@ -1,6 +1,7 @@
 # imports
 import io
 import os
+from extra import *
 import dialogflow_v2 as dialogflow
 from rec import Recorder
 import simpleaudio as sa
@@ -17,75 +18,75 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 
 class VoiceAssistant:
-    _name = None
-    _key_word = None
+    _name = 'Daisy'
+    _key_word = 'hi ' + _name
+    _shutdown_key_word = 'bye ' + _name
     _kw_heard = False
-    _favFood = 'human voice'
-    _creators = 'Liron Revah and Baruh Shalumov'
-
+    _chat_commands = ['creators', 'favorite food', 'Default Welcome Intent']
+    _game_commands = None
+    _status_dict = {'off': 'red', 'on': 'green', 'listen': 'yellow', 'record': 'orange', 'speak': 'blue'}
+    _my_status = 'red'
     _recorder = Recorder()
 
     _DIALOGFLOW_PROJECT_ID = 'gamesvoiceassistant'
     _DIALOGFLOW_LANGUAGE_CODE = 'en'
     _SESSION_ID = 'me'
-    _session_client = None
-    _session = None
 
     _language_code ='en-US'
-    _voice_gender = None
-    _stt_client = None
-    _tts_client = None
+    _voice_gender = texttospeech.enums.SsmlVoiceGender.FEMALE
 
-    def __init__(self, game, my_type, name):
-        self.startConnection()
+    def __init__(self, game, my_type=None, name=None):
+        self._game_commands = game.get_info('web_elem').keys()
         self.gender(my_type)
         if name is not None:
             self._name = name
+        change_status(self._status_dict['off'])
 
-    def startConnection(self):
-        self._session_client = dialogflow.SessionsClient()
-        self._session = self._session_client.session_path(self._DIALOGFLOW_PROJECT_ID, self._SESSION_ID)
-
-    def gender(self,my_type):
-        if my_type is not None:
+    def gender(self,gender):
+        if gender is not None:
             # voice gender ("neutral", "FEMALE", "MALE")
-            if my_type == 'va':
-                self._name = 'Daisy'
-                self._key_word = 'Hello ' + self._name
+            if gender == 'va':
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.FEMALE
-            elif my_type == 'opponent':
+            elif gender == 'opponent':
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.NEUTRAL
             else:
                 self._voice_gender = texttospeech.enums.SsmlVoiceGender.MALE
 
+    def open(self):
+        self._kw_heard = True
+        change_status(self._status_dict['on'])
+        hello_text = 'Hello everybody, My name is ' + self._name
+        self.ack(hello_text)
+        return True
+
     def close(self):
+        self._kw_heard = False
+        change_status(self._status_dict['off'])
         massage = 'Goodbye'
         self.ack(massage)
         return True
 
-    def sayName(self):
-        massage = 'My name is ' + self._name
-        return self.ack(massage)
+    def clean_recording(self):
+        self._recorder.save_to_file(None)
 
-    def sayFavFood(self):
-        massage = 'My favorite food is ' + self._favFood
-        return self.ack(massage)
-
-    def sayCreatorsName(self):
-        massage = 'My Creators are ' + self._creators
-        return self.ack(massage)
+    def ack(self, text):
+        print(text)
+        self.tts(text)
 
     def listen(self):
         text = None
         while text is None:
             self._recorder.listen()
             text = self.stt()
-            if self._kw_heard:
-                return self.dialog_flow_function(text)
-            elif self._key_word in text:
-                hello_text = 'Hello everybody'
-                self.ack(hello_text)
-                self._kw_heard = True
+            if text is not None:
+                if self._shutdown_key_word in text:
+                    self.close()
+                else:
+                    if self._kw_heard:
+                        return self.dialog_flow_function(text)
+                    elif self._key_word in text:
+                        self.open()
+                text = None
 
     @staticmethod
     def stt():
@@ -110,7 +111,11 @@ class VoiceAssistant:
         for result in response.results:
             string = result.alternatives[0].transcript
 
-        return string
+        print('User said: ')
+        if len(string) > 0:
+            print(string)
+            return string
+        return None
 
     def tts(self, massage):
         client = texttospeech.TextToSpeechClient()
@@ -129,59 +134,53 @@ class VoiceAssistant:
         # Perform the text-to-speech request on the text input with the selected
         # voice parameters and audio file type
         response = client.synthesize_speech(synthesis_input, voice, audio_config)
-
-
-        self.play(self,response.audio_content)
-        # play(response.audio_content) # should i use this
-        # The response's audio_content is binary.
-        with open('output.mp3', 'wb') as out:
-            # Write the response to the output file.
-            out.write(response.audio_content)
-            print('Audio content written to file "output.mp3"')
+        change_status(self._status_dict['speak'])
+        self.play(response.audio_content)
 
     def result_of_command(self, result, msg):
         bad_massage = 'Sorry, could not run that command'
-        text = self.dialog_flow_function(msg)
         if result:
-            self.ack(text)
+            self.ack(msg)
         else:
             self.tts(bad_massage)
         return True
 
     def dialog_flow_function(self, text):
-
+        session_client = dialogflow.SessionsClient()
+        session = session_client.session_path(self._DIALOGFLOW_PROJECT_ID, self._SESSION_ID)
         text_input = dialogflow.types.TextInput(text=text, language_code=self._DIALOGFLOW_LANGUAGE_CODE)
         query_input = dialogflow.types.QueryInput(text=text_input)
 
         try:
-            response = self._session_client.detect_intent(session=self._session, query_input=query_input)
+            response = session_client.detect_intent(session=session, query_input=query_input)
         except InvalidArgument:
+            print('Error at dialog_flow_function when trying to get response')
             raise
 
-        print("Query text:", response.query_result.query_text)
-        print("Detected intent:", response.query_result.intent.display_name)
-        print("Detected intent confidence:", response.query_result.intent_detection_confidence)
-        print("Fulfillment text:", response.query_result.fulfillment_text)
-
-        response_text = response.query_result.fulfillment_text
         response_intent = response.query_result.intent.display_name
+        response_text = response.query_result.fulfillment_text
+        response_parameters = self.get_parameters(response.query_result.parameters)
+        print(response)
 
         if '?' in response_text:
             self.ack(response_text)
             return self.listen()
 
-        parameters = self.get_parameters(response)
-        return response_text, response_intent, parameters
+        elif response_intent in self._game_commands:
+            return {'response_text': response_text, 'command': response_intent, 'parameters': response_parameters}
+        elif response_intent in self._chat_commands:
+            self.ack(response_text)
+            return None
 
-    def get_parameters(self, response):
-        # TODO get parameters from response and return dict
-        return None
+    @staticmethod
+    def get_parameters(response):
+        parameters = dict()
+        for key in response.keys():
+            parameters[key] = response[key]
+        return parameters
 
-    def ack(self, text):
-        print(text)
-        self.tts(text)
-
-    def play(self, sound):
+    @staticmethod
+    def play(sound):
         fs = 24000  # 44100 samples per second
         # Start playback
         play_obj = sa.play_buffer(sound, 1, 2, fs)

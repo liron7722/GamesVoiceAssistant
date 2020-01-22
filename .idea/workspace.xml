@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d07dabe-9fde-4a2c-a4d7-47893ee1456f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/VoiceAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/VoiceAssistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/WebDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebDriver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/WebElements.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebElements.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/extra.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/extra.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/games files/monopoly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/games files/monopoly.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/rec.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/rec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/voice_assistant_status.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Files/voice_assistant_status.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/TODO List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/TODO List.txt" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +41,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.ipython/extensions" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -46,19 +50,49 @@
       <recent name="C:\Users\Liron\Documents\GitHub\GameVoiceAssistant\Files" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="VoiceAssistant" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GameVoiceAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Files/VoiceAssistant.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="extra" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GameVoiceAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Files/extra.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GameVoiceAssistant" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,11 +114,47 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="rec" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GameVoiceAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Files/rec.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.VoiceAssistant" />
+        <item itemvalue="Python.rec" />
+        <item itemvalue="Python.extra" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -104,7 +174,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -119,19 +191,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1578006652417" />
-    <state x="548" y="157" key="FileChooserDialogImpl" timestamp="1578934824220">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="548" y="157" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1578934824220" />
-    <state x="279" y="58" key="SettingsEditor" timestamp="1578934837668">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578934837668" />
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1579549389650">
+    <state x="685" y="198" key="FileChooserDialogImpl" timestamp="1579636816628">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="534" y="277" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579542458323" />
-    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579549389650" />
+    <state x="548" y="157" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1578934824220" />
+    <state x="685" y="198" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579636816628" />
+    <state width="1899" height="210" key="GridCell.Tab.0.bottom" timestamp="1579722986780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579683614546" />
+    <state width="1899" height="210" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579722986780" />
+    <state width="1899" height="210" key="GridCell.Tab.0.center" timestamp="1579722986780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579683614546" />
+    <state width="1899" height="210" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579722986780" />
+    <state width="1899" height="210" key="GridCell.Tab.0.left" timestamp="1579722986780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579683614546" />
+    <state width="1899" height="210" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579722986780" />
+    <state width="1899" height="210" key="GridCell.Tab.0.right" timestamp="1579722986780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579683614546" />
+    <state width="1899" height="210" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579722986780" />
+    <state x="349" y="73" key="SettingsEditor" timestamp="1579636828972">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578934837668" />
+    <state x="349" y="73" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579636828972" />
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1579717982340">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="534" y="277" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579674894442" />
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579717982340" />
     <state x="771" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578950123092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -12,7 +12,7 @@ class WebElements:
         self._string_type = string_type
         self._string = string
 
-    def get_data(self, string):
+    def get_data(self, string=None):
         if string is None:
             return self._name, self._type, self._string_type, self._string
         elif string is 'name':
