@@ -1232,7 +1232,7 @@ function addAlert(alertText) {
 
 function popup(HTML, action, option) {
 	document.getElementById("popuptext").innerHTML = HTML;
-	document.getElementById("popup").style.width = "300px";
+	document.getElementById("popup").style.width = "400px";
 	document.getElementById("popup").style.top = "0px";
 	document.getElementById("popup").style.left = "0px";
 

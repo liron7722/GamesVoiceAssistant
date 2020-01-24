@@ -1,41 +1,193 @@
-<p>#1 for start game say, "start game".</p>
-<p>#2 for start game say, "start game".</p>
-<p>#3 for start game say, "start game".</p>
-<p>#4 for start game say, "start game".</p>
-<p>#5 for start game say, "start game".</p>
-<p>#6 for start game say, "start game".</p>
-<p>#7 for start game say, "start game".</p>
-<p>#8 for start game say, "start game".</p>
-<p>#9 for start game say, "start game".</p>
-<p>#10 for start game say, "start game".</p>
-<p>#11 for start game say, "start game".</p>
-<p>#12 for start game say, "start game".</p>
-<p>#13 for start game say, "start game".</p>
-<p>#14 for start game say, "start game".</p>
-<p>#15 for start game say, "start game".</p>
-<p>#16 for start game say, "start game".</p>
-<p>#17 for start game say, "start game".</p>
-<p>#18 for start game say, "start game".</p>
-<p>#19 for start game say, "start game".</p>
-<p>#20 for start game say, "start game".</p>
-<p>#21 for start game say, "start game".</p>
-<p>#22 for start game say, "start game".</p>
-<p>#23 for start game say, "start game".</p>
-<p>#24 for start game say, "start game".</p>
-<p>#25 for start game say, "start game".</p>
-<p>#26 for start game say, "start game".</p>
-<p>#27 for start game say, "start game".</p>
-<p>#28 for start game say, "start game".</p>
-<p>#29 for start game say, "start game".</p>
-<p>#30 for start game say, "start game".</p>
-<p>#31 for start game say, "start game".</p>
-<p>#32 for start game say, "start game".</p>
-<p>#33 for start game say, "start game".</p>
-<p>#34 for start game say, "start game".</p>
-<p>#35 for start game say, "start game".</p>
-<p>#36 for start game say, "start game".</p>
-<p>#37 for start game say, "start game".</p>
-<p>#38 for start game say, "start game".</p>
-<p>#39 for start game say, "start game".</p>
-<p>#40 for start game say, "start game".</p>
+<p><b>#1 To start game say : </b>
+	<li>you can start</li>
+	<li>lets go</li>
+	<li>start game</li>
+</p>
+<p><b>#2 To new game say : </b>
+	<li>restart</li>
+	<li>new game</li>
+	<li>start a new game</li>
+</p>
+<p><b>#3 To select number of players say : </b>
+	<li>can you change to <b><u>NUMBER</u></b> players</li>
+	<li>number of players are  <b><u>NUMBER</u></b></li>
+	<li>number of players are  <b><u>NUMBER</u></b></li>
+	<li>we are <b><u>NUMBER</u></b> players</li>
+</p>
+<p><b>#4 To rename the player say :</b>
+	<li>call player <b><u>NUMBER</u></b> <b><u>NAME</u></b></li>
+	<li>name player <b><u>NUMBER</u></b> <b><u>NAME</u></b></li>
+	<li>change player <b><u>NUMBER</u></b> <b><u>NAME</u></b></li>
+</p>
+<p><b>#5 To choose a player color say :</b>
+	<li>i liked player <b><u>NUMBER</u></b> color would be <b><u>COLOR</u></b></li>
+	<li>player <b><u>NUMBER</u></b> color should be <b><u>COLOR</u></b></li>
+	<li>change player <b><u>NUMBER</u></b> to <b><u>COLOR</u></b></li>
+</p>
+<p><b>#6 To choose a player type say :</b>
+	<li>player <b><u>NUMBER</u></b> type should be <b><u>TYPE</u></b></li>
+</p>
+<p><b>#7 To buy the area say :</b>
+	<li>buy this land</li>
+	<li>buy this</li>
+</p>
+<p><b>#8 To buy a house say</b>
+	<li>buy building in this land</li>
+	<li>buy building</li>
+	<li>buy house here</li>
+	<li>buy house</li>
+</p>
+<p><b>#9 To view the card say :</b>
+	<li>show card</li>
+</p>
+<p><b>#10 To see the name of the card say :</b>
+	<li>say cell  <b><u>CELL</u></b></li>
+</p>
+<p><b>#11 To know who the cardholder will say :</b>
+	<li>how own <b><u>CELL</u></b></li>
+</p>
+<p><b>#12 To know who holds the card say :</b>
+	<li>who is in <b><u>CELL</u></b></li>
+</p>
+<p><b>#13 To close jumps say :</b>
+	<li>close popup</li>
+</p>
+<p><b>#14 To hear the pop-up content says :</b>
+	<li>What the popup say</li>
+	<li>read popup text</li>
+	<li></li>
+</p>
+<p><b>#15 To drag the popup say :</b>
+	<li>Move popup <b><u>DIRACTION</u></b> by <b><u>NUMBER</u></b></li>
+	<li>drag popup window to the <b><u>DIRACTION</u></b> by <b><u>NUMBER</u></b></li>
+</p>
+<p><b>#16 To click yes on popup say :</b>
+	<li>yes</li>
+</p>
+<p><b>#17 To click no on Popup say :</b>
+	<li>no</li>
+</p>
+<p><b>#18 To know who the trading partner will say :</b>
+	<li>change trade partner to <b><u>NUMBER</u></b></li>
+</p>
+<p><b>#19 To confirm the trade say :</b>
+	<li>i want this deal</li>
+	<li>accept trade</li>
+</p>
+<p><b>#20 To offer trade Tell :</b>
+	<li>ask this deal</li>
+	<li>propose trade</li>
+</p>
+<p><b>#21 To reject the trade you will say :</b>
+	<li>reject deal</li>
+	<li>reject trade</li>
+</p>
+<p><b>#22 To cancel the trade Say :</b>
+	<li>cancel deal</li>
+	<li>i dont want this deal</li>
+	<li>cancel trade</li>
+</p>
+<p><b>#23 To see the statistics say :</b>
+	<li>show me stats</li>
+	<li>i want to view stats</li>
+</p>
+<p><b>#24 To close the statistics say :</b>
+	<li>close stats window</li>
+	<li>close stats</li>
+</p>
+<p><b>#25 To drag the statistics say :</b>
+	<li>drag stats window to the <b><u>DIRACTION</u></b> by <b><u>NUMBER</u></b></li>
+</p>
+<p><b>#26 To hear the statistics text say :</b>
+	<li>read stats</li>
+	<li>read stats please</li>
+</p>
+<p><b>#27 To know who the creators say :</b>
+	<li>who is your creator</li>
+	<li>who create you</li>
+</p>
+<p><b>#28 To know who the current player will say :</b>
+	<li>am i playing right now?</li>
+	<li>who's turn is it?</li>
+	<li>who is playing right now?</li>
+</p>
+<p><b>#29 To get out of the game say :</b>
+	<li>close game</li>
+	<li>close browser</li>
+	<li>end game</li>
+</p>
+<p><b>#30 To get to the menu say :</b>
+	<li><b><u>MENU</u></b> column</li>
+	<li><b><u>MENU</u></b> label</li>
+	<li>switch to <b><u>MENU</u></b></li>
+</p>
+<p><b>#31 For offering item say :</b>
+	<li>give <b><u>CELL</u></b></li>
+</p>
+<p><b>#32 For offering money say :</b>
+	<li>offer <b><u>CURRENCY</u></b></li>
+</p>
+<p><b>#33 To offer an item to a partner say :</b>
+	<li>i want <b><u>CELL</u></b></li>
+</p>
+<p><b>#34 To offer money to a partner say :</b>
+	<li>i want <b><u>CURRENCY</u></b></li>
+</p>
+<p><b>#35 To roll dice say :</b>
+	<li>roll it</li>
+	<li>roll dice</li>
+</p>
+<p><b>#36 To finish the turn, say :</b>
+	<li>next guy turn</li>
+	<li>end turn</li>
+</p>
+<p><b>#37 To resign say :</b>
+	<li>i forfeit</li>
+	<li>resign</li>
+	<li>i want  to quit</li>
+</p>
+<p><b>#38 To stand on a cell say :</b>
+	<li>Stand on <b><u>CELL</u></b></li>
+</p>
+<p><b>#39 For Mortgage say :</b>
+	<li>mortgage land</li>
+	<li>mortgage here</li>
+	<li>mortgage this</li>
+</p>
+<p><b>#40 For the log, say :</b>
+	<li>read log</li>
+</p>
+<p><b>#41 For the favorite food, say :</b>
+	<li>what you like to eat</li>
+	<li>what is your favorite food</li>
+</p>
+<p><b>#42 For default welcome Intent say :</b>
+	<li>just going to say hi</li>
+	<li>heya</li>
+	<li>hello hi</li>
+	<li>howdy</li>
+	<li>hey there</li>
+	<li>hi there</li>
+	<li>greetings</li>
+	<li>hey</li>
+	<li>long time no see</li>
+	<li>hello</li>
+</p>
+<p><b>#43 To see the rules say :</b>
+	<li>what are the rules of the game</li>
+	<li>can you tell me the game rules</li>
+	<li>what are the game rules</li>
+	<li>game rules</li>
+</p>
+<p><b>#44 To see the voice commands say :</b>
+	<li>what commands do you have</li>
+	<li>what can i ask you to do</li>
+	<li>what are the voice commands</li>
+</p>
+<p><b>#45 To see an explanation of the LEDs, say :</b>
+	<li>show explanation of the leds</li>
+	<li>leds</li>
+</p>
+
+
 
