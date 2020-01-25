@@ -22,10 +22,11 @@ class VoiceAssistant:
     _key_word = 'hi ' + _name
     _shutdown_key_word = 'bye ' + _name
     _kw_heard = False
-    _chat_commands = ['creators', 'favorite food', 'Default Welcome Intent']
+    _chat_commands = ['creators', 'favorite food', 'Default Welcome Intent', 'advice', 'favorite food']
     _game_commands = None
     _status_dict = {'off': 'red', 'on': 'green', 'listen': 'yellow', 'record': 'orange', 'speak': 'blue'}
     _my_status = 'red'
+    _advice_counter = 0
     _recorder = Recorder()
 
     _DIALOGFLOW_PROJECT_ID = 'gamesvoiceassistant'
@@ -66,12 +67,23 @@ class VoiceAssistant:
         self.ack(massage)
         return True
 
-    def clean_recording(self):
-        self._recorder.save_to_file(None)
-
     def ack(self, text):
-        print(text)
+        print('Voice Assistance said: ' + text)
         self.tts(text)
+
+    def update_advice_counter(self):
+        self._advice_counter += 1
+        if self._advice_counter % 10 == 0:
+            self.give_advice()
+
+    def give_advice(self):
+        print('Running auto advice')
+        self.dialog_flow_function('advice')
+
+    def read_log(self, text):
+        if text is not None:
+            for line in text:
+                self.tts(line)
 
     def listen(self):
         text = None
@@ -83,6 +95,7 @@ class VoiceAssistant:
                     self.close()
                 else:
                     if self._kw_heard:
+                        self.update_advice_counter()
                         return self.dialog_flow_function(text)
                     elif self._key_word in text:
                         self.open()
@@ -111,10 +124,10 @@ class VoiceAssistant:
         for result in response.results:
             string = result.alternatives[0].transcript
 
-        print('User said: ')
         if len(string) > 0:
-            print(string)
+            print('User said: ' + string)
             return string
+        print('Nothing on the recording')
         return None
 
     def tts(self, massage):

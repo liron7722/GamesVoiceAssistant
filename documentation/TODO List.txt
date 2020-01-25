@@ -1,5 +1,6 @@
-- read log after execute a command and saying response
--TODO fix what happen if webdriver fail at task  
--fix bug when game crash if item wasnt found
+-fix bug when game crash if elem wasnt found
+-improve stt
+-do volume test function in rec.py to decide the the volume limit
+-clean the recording somehow (maybe dont let anything in below volume limit)
 - cheak bugs
 - do class diagram for class presentation 
