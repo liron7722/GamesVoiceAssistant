@@ -46,11 +46,7 @@ function Game() {
 
 	};
 
-
-
 	// Auction functions:
-
-
 
 	var finalizeAuction = function() {
 		var p = player[highestbidder];
@@ -245,11 +241,7 @@ function Game() {
 		this.auctionPass();
 	};
 
-
-
 	// Trade functions:
-
-
 
 	var currentInitiator;
 	var currentRecipient;
@@ -2984,6 +2976,101 @@ window.onload = function() {
 
 	});
 
+    function getTextFromFile(file){
+        var allText;
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    allText = rawFile.responseText;
+                }
+            }
+        }
+        rawFile.send(null);
+        return allText;
+	}
+
+	function mypopup(HTML, action, option) {
+	    document.getElementById("popuptext").innerHTML = HTML;
+	    document.getElementById("popup").style.width = "1000px";
+	    document.getElementById("popup").style.top = "0px";
+	    document.getElementById("popup").style.left = "0px";
+
+	    if (!option && typeof action === "string") {
+		    option = action;
+	    };
+
+	    //option = option ? option.toLowerCase() : "";
+
+	    if (typeof action !== "function") {
+		    action = null;
+	    };
+
+	    // Yes/No
+	    if (option === "yes/no") {
+		    document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"Yes\" id=\"popupyes\" /><input type=\"button\" value=\"No\" id=\"popupno\" /></div>";
+
+		    $("#popupyes, #popupno").on("click", function() {
+			    $("#popupwrap").hide();
+			    $("#popupbackground").fadeOut(400);
+		    });
+
+		    $("#popupyes").on("click", action);
+
+	        // Ok
+	    }
+	    else if (option !== "blank") {
+		    $("#popuptext").append("<div><input type='button' value='OK' id='popupclose' /></div>");
+		    $("#popupclose").focus();
+
+		    $("#popupclose").on("click", function() {
+			    $("#popupwrap").hide();
+			    $("#popupbackground").fadeOut(400);
+		    }).on("click", action);
+	    }
+
+	    // Show using animation.
+	    $("#popupbackground").fadeIn(400, function() {
+		    $("#popupwrap").show();
+	    });
+    };
+
+	var rules_text;
+
+	$("#frontgamerules").click(function() {
+	    //rules_text = getTextFromFile('rules.txt');
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Game Rules</div><div style='text-align: justify;'>" + rules + "</div>");
+	});
+
+	$("#backgamerules").click(function() {
+	    //rules_text = getTextFromFile('rules.txt')
+		mypopup("<div style='font-weight: bold; font-size: 16px; '>Game Rules</div><div style='text-align: justify;'>" + rules + "</div>")
+	});
+
+	$("#frontvoicecommands").click(function() {
+	    //rules_text = getTextFromFile('voice_commands.txt')
+		popup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + voice_commands + "</div>")
+	});
+
+	$("#backvoicecommands").click(function() {
+	    //rules_text = getTextFromFile('voice_commands.txt')
+		popup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + voice_commands + "</div>")
+	});
+
+	$("#frontexplanation").click(function() {
+	    //rules_text = getTextFromFile('explanation_of_the_leds.txt')
+		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + explanation_of_the_leds + "</div>");
+	});
+
+	$("#backexplanation").click(function() {
+	    //rules_text = getTextFromFile('explanation_of_the_leds.txt')
+		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + explanation_of_the_leds + "</div>")
+	});
+
 	$("#sellhousebutton").click(function() { sellHouse(getCheckedProperty()); });
 
 	$("#viewstats").on("click", showStats);
@@ -3008,99 +3095,11 @@ window.onload = function() {
 
 
 	$("#trade-menu-item").click(game.trade);
-
-	function getTextFromFile(file){
-        var allText;
-        var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", file, false);
-        rawFile.onreadystatechange = function ()
-        {
-            if(rawFile.readyState === 4)
-            {
-                if(rawFile.status === 200 || rawFile.status == 0)
-                {
-                    allText = rawFile.responseText;
-                }
-            }
-        }
-        rawFile.send(null);
-        return allText;
-	}
-
-	function mypopup(HTML, action, option) {
-	document.getElementById("popuptext").innerHTML = HTML;
-	document.getElementById("popup").style.width = "1000px";
-	document.getElementById("popup").style.top = "0px";
-	document.getElementById("popup").style.left = "0px";
-
-	if (!option && typeof action === "string") {
-		option = action;
-	}
-
-	option = option ? option.toLowerCase() : "";
-
-	if (typeof action !== "function") {
-		action = null;
-	}
-
-	// Yes/No
-	if (option === "yes/no") {
-		document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"Yes\" id=\"popupyes\" /><input type=\"button\" value=\"No\" id=\"popupno\" /></div>";
-
-		$("#popupyes, #popupno").on("click", function() {
-			$("#popupwrap").hide();
-			$("#popupbackground").fadeOut(400);
-		});
-
-		$("#popupyes").on("click", action);
-
-	// Ok
-	} else if (option !== "blank") {
-		$("#popuptext").append("<div><input type='button' value='OK' id='popupclose' /></div>");
-		$("#popupclose").focus();
-
-		$("#popupclose").on("click", function() {
-			$("#popupwrap").hide();
-			$("#popupbackground").fadeOut(400);
-		}).on("click", action);
-
-	}
-
-	// Show using animation.
-	$("#popupbackground").fadeIn(400, function() {
-		$("#popupwrap").show();
-	});
-
-}
-
-	$("#frontgamerules").click(function() {
-	    var rules_text = getTextFromFile('rules.txt')
-		mypopup("<div style='font-weight: bold; font-size: 16px; '>Game Rules</div><div style='text-align: justify;'>" + rules_text + "</div>")
-	});
-
-	$("#backgamerules").click(function() {
-	    var rules_text = getTextFromFile('rules.txt')
-		mypopup("<div style='font-weight: bold; font-size: 16px; '>Game Rules</div><div style='text-align: justify;'>" + rules_text + "</div>")
-	});
-
-	$("#frontvoicecommands").click(function() {
-	    var rules_text = getTextFromFile('voice_commands.txt')
-		popup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
-	});
-
-	$("#backvoicecommands").click(function() {
-	    var rules_text = getTextFromFile('voice_commands.txt')
-		popup("<div style='font-weight: bold; font-size: 16px; '>Voice Commands</div><div style='text-align: justify;'>" + rules_text + "</div>")
-	});
-
-		$("#frontexplanation").click(function() {
-	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
-		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
-	});
-
-	$("#backexplanation").click(function() {
-	    var rules_text = getTextFromFile('explanation_of_the_leds.txt')
-		popup("<div style='font-weight: bold; font-size: 16px; '>Explanation of LEDs</div><div style='text-align: justify;'>" + rules_text + "</div>")
-	});
-
 };
+
+var explanation_of_the_leds = "<p> <b>Red</b>, Daisy is off </p><p> <b>Green</b>, Daisy is on </p><p> <b>Orange</b>, Daisy is record </p><p> <b>Yellow</b>, Daisy is lisetn </p><p> <b>Blue</b>, Daisy is speak </p>";
+var rules = "<p>The rules of Monopoly are not difficult, but they are specific. Monopoly can be played by 2+ players, depending on the number of player tokens available.</p> <p>Monopoly requires a special board, 32 houses, 12 hotels, Chance and Community Chest cards, Title Deed cards for each property, play money, player tokens, and two six-sided dice.</p> <p>Each player chooses a token and places it on ‘Go’, and is provided with $1500 as follows: 2 of each $500’s, $100’s, and $50’s; 6 $20’s; and 5 of each $10’s, $5’s, and $1’s. One player is the Banker. All assets of the Bank should be separate from the Banker’s own assets. The Bank controls all remaining money and all properties and buildings until they are purchased. The Bank can never ‘go broke’ – more money should be made if needed. Game Play</p> <p>According to the rules of Monopoly, the player that roles the highest total on both dice goes first. Game play proceeds clockwise from that player.</p> <p>There are 4 main parts to a turn.</p> <p>1) Roll the dice. Move the number of squares indicated. If you throw doubles, you take another turn after your turn is completed. Each time you pass ‘Go’, collect $200 from the Bank.</p> <p>2) Buy properties. You may buy any property from the Bank that you land on if it is not already owned. If you do not purchase the property, the Banker auctions the property to the highest bidder. Some people chose not to use auctions, only allowing properties to be purchased as they are landed on.</p> <p>3) Building. You may only build when you own all properties in a color group. Building must be equal on all properties in a group. You may place a single building on a single property, but you may not place two buildings on one property unless all other properties in the group have one building present (even build rule). Any property can have a total of 4 houses, except Utilities and Railroads, which cannot be devloped. To place a hotel on a property, 4 houses must be present on all properties in the group. Houses are removed from the property when a hotel is placed. All buildings are purchased from the Bank.</p> <p>4) Complete necessary actions. Pay rent as determined by the Title Deed for the property you are on. Pay Income Tax to the Bank ($200 or 10% of your total assets). Draw a Community Chest or Chance card and follow the instructions. These cards are returned to the bottom of the pile when the action is completed.</p> <p>Going to Jail</p> <p>In the rules of Monopoly, there are 3 ways to be sent to ‘Jail’:</p> <p>1) Land on a space marked ‘Go to Jail’</p> <p>2) Draw a card marked ‘Go to Jail’</p> <p>3) Roll doubles three times in a row</p> <p>There are 4 ways to get out of ‘Jail’</p> <p>1) Pay the $50 fine before rolling the dice</p> <p>2) Use a ‘Get Out Of Jail Free Card’ before rolling the dice</p> <p>3) Roll doubles</p> <p>4) After the 3rd failed attempt to roll doubles, you must pay the $50 fine and leave jail</p> <p>When you get out of ‘Jail’, move the number of spaces indicated by the dice. Even while in ‘Jail’, you may buy and sell property and collect any rent owed to you. You are not sent to ‘Jail’ if you land on the ‘Jail’ square during normal game play, and you do not incur a fine.</p> <p>Money to Pay Rent, etc</p> <p>The rules of Monopoly state, if you do not have enough money to pay Rent or other obligations during your turn, you may chose to sell houses, hotels, or property. Buildings may be sold to the Bank for one-half of the purchase price. Buildings may not be sold to other players. Unimproved properties (including railroad and utilities) can be sold to any player for any amount.</p> <p>Unimproved properties can also be mortgaged to the Bank for the value mortgage value printed on the Title Deed. No rent is collected on mortgaged properties. To lift a mortgage, the player must pay the Bank the mortgage amount plus 10% interest. Players retain possession of mortgaged properties. If that player chooses, he or she may sell the mortgaged property to another player for any price. The property would remain mortgaged, and the new owner would have to pay the Bank the same mortgage + 10% to lift the mortgage.</p> <p>Winning the Game</p> <p>You may chose to end the game at any time and tally the total worth of each player (including buildings and all property worth). You may also chose to play until all but one player has been declared Bankrupt. Bankruptcy occurs when a player owes more than he or she can pay. You must turn over all that you have including money and Title Deeds to the Bank or another player, depending on who the current debt is owed to. Any player who has declared Bankruptcy is no longer part of the game. According to the rules of Monopoly, the last player in the game, or the player with the most money, wins.</p>";
+var voice_commands = "<p><b>#1 To start game say : </b> <li>you can start</li> <li>lets go</li> <li>start game</li> </p> <p><b>#2 To new game say : </b> <li>restart</li> <li>new game</li> <li>start a new game</li> </p> <p><b>#3 To select number of players say : </b> <li>can you change to <b><u>NUMBER</u></b> players</li> <li>number of players are <b><u>NUMBER</u></b></li> <li>number of players are <b><u>NUMBER</u></b></li> <li>we are <b><u>NUMBER</u></b> players</li> </p> <p><b>#4 To rename the player say :</b> <li>call player <b><u>NUMBER</u></b> <b><u>NAME</u></b></li> <li>name player <b><u>NUMBER</u></b> <b><u>NAME</u></b></li> <li>change player <b><u>NUMBER</u></b> <b><u>NAME</u></b></li> </p> <p><b>#5 To choose a player color say :</b> <li>i liked player <b><u>NUMBER</u></b> color would be <b><u>COLOR</u></b></li> <li>player <b><u>NUMBER</u></b> color should be <b><u>COLOR</u></b></li> <li>change player <b><u>NUMBER</u></b> to <b><u>COLOR</u></b></li> </p> <p><b>#6 To choose a player type say :</b> <li>player <b><u>NUMBER</u></b> type should be <b><u>TYPE</u></b></li> </p> <p><b>#7 To buy the area say :</b> <li>buy this land</li> <li>buy this</li> </p> <p><b>#8 To buy a house say</b> <li>buy building in this land</li> <li>buy building</li> <li>buy house here</li> <li>buy house</li> </p> <p><b>#9 To view the card say :</b> <li>show card</li> </p> <p><b>#10 To see the name of the card say :</b> <li>say cell <b><u>CELL</u></b></li> </p> <p><b>#11 To know who the cardholder will say :</b> <li>how own <b><u>CELL</u></b></li> </p> <p><b>#12 To know who holds the card say :</b> <li>who is in <b><u>CELL</u></b></li> </p> <p><b>#13 To close jumps say :</b> <li>close popup</li> </p> <p><b>#14 To hear the pop-up content says :</b> <li>What the popup say</li> <li>read popup text</li> <li></li> </p> <p><b>#15 To drag the popup say :</b> <li>Move popup <b><u>DIRACTION</u></b> by <b><u>NUMBER</u></b></li> <li>drag popup window to the <b><u>DIRACTION</u></b> by <b><u>NUMBER</u></b></li> </p> <p><b>#16 To click yes on popup say :</b> <li>yes</li> </p> <p><b>#17 To click no on Popup say :</b> <li>no</li> </p> <p><b>#18 To know who the trading partner will say :</b> <li>change trade partner to <b><u>NUMBER</u></b></li> </p> <p><b>#19 To confirm the trade say :</b> <li>i want this deal</li> <li>accept trade</li> </p> <p><b>#20 To offer trade Tell :</b> <li>ask this deal</li> <li>propose trade</li> </p> <p><b>#21 To reject the trade you will say :</b> <li>reject deal</li> <li>reject trade</li> </p> <p><b>#22 To cancel the trade Say :</b> <li>cancel deal</li> <li>i dont want this deal</li> <li>cancel trade</li> </p> <p><b>#23 To see the statistics say :</b> <li>show me stats</li> <li>i want to view stats</li> </p> <p><b>#24 To close the statistics say :</b> <li>close stats window</li> <li>close stats</li> </p> <p><b>#25 To drag the statistics say :</b> <li>drag stats window to the <b><u>DIRACTION</u></b> by <b><u>NUMBER</u></b></li> </p> <p><b>#26 To hear the statistics text say :</b> <li>read stats</li> <li>read stats please</li> </p> <p><b>#27 To know who the creators say :</b> <li>who is your creator</li> <li>who create you</li> </p> <p><b>#28 To know who the current player will say :</b> <li>am i playing right now?</li> <li>whos turn is it?</li> <li>who is playing right now?</li> </p> <p><b>#29 To get out of the game say :</b> <li>close game</li> <li>close browser</li> <li>end game</li> </p> <p><b>#30 To get to the menu say :</b> <li><b><u>MENU</u></b> column</li> <li><b><u>MENU</u></b> label</li> <li>switch to <b><u>MENU</u></b></li> </p> <p><b>#31 For offering item say :</b> <li>give <b><u>CELL</u></b></li> </p> <p><b>#32 For offering money say :</b> <li>offer <b><u>CURRENCY</u></b></li> </p> <p><b>#33 To offer an item to a partner say :</b> <li>i want <b><u>CELL</u></b></li> </p> <p><b>#34 To offer money to a partner say :</b> <li>i want <b><u>CURRENCY</u></b></li> </p> <p><b>#35 To roll dice say :</b> <li>roll it</li> <li>roll dice</li> </p> <p><b>#36 To finish the turn, say :</b> <li>next guy turn</li> <li>end turn</li> </p> <p><b>#37 To resign say :</b> <li>i forfeit</li> <li>resign</li> <li>i want to quit</li> </p> <p><b>#38 To stand on a cell say :</b> <li>Stand on <b><u>CELL</u></b></li> </p> <p><b>#39 For Mortgage say :</b> <li>mortgage land</li> <li>mortgage here</li> <li>mortgage this</li> </p> <p><b>#40 For the log, say :</b> <li>read log</li> </p> <p><b>#41 For the favorite food, say :</b> <li>what you like to eat</li> <li>what is your favorite food</li> </p> <p><b>#42 For default welcome Intent say :</b> <li>just going to say hi</li> <li>heya</li> <li>hello hi</li> <li>howdy</li> <li>hey there</li> <li>hi there</li> <li>greetings</li> <li>hey</li> <li>long time no see</li> <li>hello</li> </p> <p><b>#43 To see the rules say :</b> <li>what are the rules of the game</li> <li>can you tell me the game rules</li> <li>what are the game rules</li> <li>game rules</li> </p> <p><b>#44 To see the voice commands say :</b> <li>what commands do you have</li> <li>what can i ask you to do</li> <li>what are the voice commands</li> </p> <p><b>#45 To see an explanation of the LEDs, say :</b> <li>show explanation of the leds</li> <li>leds</li> </p>";
+
+
+
