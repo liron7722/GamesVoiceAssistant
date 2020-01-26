@@ -1,20 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf2342df-fa06-484f-9190-41a66c5313fc" name="Default Changelist" comment="" />
+    <list default="true" id="1859641d-013f-4a5a-8ae4-112d0a1a6b26" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/games files/games_list_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/games files/games_list_file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/Architecture.vsdx" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Architecture.vsdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/Monopoly Voice Assistant.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Monopoly Voice Assistant.pptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/monopoly-master/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/monopoly-master/ledicator.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/ledicator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/monopoly-master/monopoly.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/monopoly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/monopoly-master/rules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/rules.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/monopoly-master/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/monopoly-master/voice_commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/voice_commands.txt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1WrJfT1zWbaV1dmjUUv8rKGVVMv" />
+  <component name="ProjectId" id="1Wu0Th1qoaHbZMxVhBQCNF69lY8" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Documents\GamesVoiceAssistant\Files" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -28,16 +57,66 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="WebDriver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="GameVoiceAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Files/WebDriver.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="GameVoiceAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Files" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Files/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.WebDriver" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cf2342df-fa06-484f-9190-41a66c5313fc" name="Default Changelist" comment="" />
-      <created>1579901883511</created>
+      <changelist id="1859641d-013f-4a5a-8ae4-112d0a1a6b26" name="Default Changelist" comment="" />
+      <created>1579984182887</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1579901883511</updated>
+      <updated>1579984182887</updated>
     </task>
     <servers />
   </component>

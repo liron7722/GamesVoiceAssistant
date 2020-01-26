@@ -1,49 +1,37 @@
 function changeColor(){
-     var content;
-     var file = 'voice_assistant_status.txt';
-     var rawFile = new XMLHttpRequest();
+     var element = document.getElementById("colorinput");
+     //element.innerHTML = "green";
+     console.log(element.textContent);
 
-     rawFile.open("GET", '../../Files/voice_assistant_status.txt', false);
-     rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                content = rawFile.responseText;
-            }
-        }
-    }
-    rawFile.send(null);
-    if(content.includes('off'))
+    if(element.textContent.includes('red'))
     {
         var elements = document.getElementsByClassName("leds")
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.background='#F00';
         }
     }
-    else if(content.includes('on'))
+    else if(element.textContent.includes('green'))
     {
         var elements = document.getElementsByClassName("leds")
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.background='#ABFF00';
         }
     }
-    else if(content.includes('record'))
+    else if(element.textContent.includes('orange'))
     {
         var elements = document.getElementsByClassName("leds")
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.background='#ff9900';
         }
     }
-    else if(content.includes('listen'))
+    else if(element.textContent.includes('yellow'))
     {
         var elements = document.getElementsByClassName("leds")
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.background='#FF0';
         }
     }
-    else if(content.includes('speak'))
+    else if(element.textContent.includes('blue'))
     {
         var elements = document.getElementsByClassName("leds")
         for (var i = 0; i < elements.length; i++) {

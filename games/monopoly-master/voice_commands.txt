@@ -108,7 +108,7 @@
 </p>
 <p><b>#28 To know who the current player will say :</b>
 	<li>am i playing right now?</li>
-	<li>who's turn is it?</li>
+	<li>whos turn is it?</li>
 	<li>who is playing right now?</li>
 </p>
 <p><b>#29 To get out of the game say :</b>
@@ -188,6 +188,5 @@
 	<li>show explanation of the leds</li>
 	<li>leds</li>
 </p>
-
 
 
