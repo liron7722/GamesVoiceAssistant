@@ -22,7 +22,7 @@ class VoiceAssistant:
     _key_word = 'hi ' + _name
     _shutdown_key_word = 'bye ' + _name
     _kw_heard = False
-    _chat_commands = ['creators', 'favorite food', 'Default Welcome Intent', 'advice', 'favorite food']
+    _chat_commands = ['creators', 'favorite food', 'Default Welcome Intent', 'advice', 'welcome back']
     _game_commands = None
     _status_dict = {'off': 'red', 'on': 'green', 'listen': 'yellow', 'record': 'orange', 'speak': 'blue'}
     _my_status = 'red'
@@ -68,8 +68,14 @@ class VoiceAssistant:
         return True
 
     def ack(self, text):
-        print('Voice Assistance said: ' + text)
-        self.tts(text)
+        if len(text) < 150:
+            print('Voice Assistance said: ' + text)
+            self.tts(text)
+        else:
+            text = text.splitlines()
+            for line in text:
+                print('Voice Assistance said: ' + line)
+                self.tts(line)
 
     def update_advice_counter(self):
         self._advice_counter += 1
@@ -77,13 +83,13 @@ class VoiceAssistant:
             self.give_advice()
 
     def give_advice(self):
-        print('Running auto advice')
+        self.ack('Running auto advice')
         self.dialog_flow_function('advice')
 
     def read_log(self, text):
         if text is not None:
             for line in text:
-                self.tts(line)
+                self.ack(line)
 
     def listen(self):
         text = None
@@ -95,7 +101,6 @@ class VoiceAssistant:
                     self.close()
                 else:
                     if self._kw_heard:
-                        self.update_advice_counter()
                         return self.dialog_flow_function(text)
                     elif self._key_word in text:
                         self.open()
@@ -173,7 +178,11 @@ class VoiceAssistant:
         response_intent = response.query_result.intent.display_name
         response_text = response.query_result.fulfillment_text
         response_parameters = self.get_parameters(response.query_result.parameters)
+        response_confidence = response.query_result.intent_detection_confidence
         print(response)
+
+        #if response_confidence < 0.5:
+            #return self.dialog_flow_function('fallback')
 
         if '?' in response_text:
             self.ack(response_text)

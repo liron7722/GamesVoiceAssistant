@@ -119,6 +119,30 @@
 		"string_type": "id",
 		"string": "pname"
     },
+    "bid price": {
+		"name": "bid price",
+		"my_type": "send",
+		"string_type": "id",
+		"string": "bidprice"
+    },
+    "bid": {
+		"name": "bid",
+		"my_type": "click",
+		"string_type": "id",
+		"string": "bid"
+    },
+    "pass bid": {
+		"name": "pass bid",
+		"my_type": "click",
+		"string_type": "id",
+		"string": "bidpass"
+    },
+    "exit auction": {
+		"name": "exit auction",
+		"my_type": "click",
+		"string_type": "id",
+		"string": "exitbid"
+    },
     "roll dice": {
         "name": "roll dice",
         "my_type": "click",

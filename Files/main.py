@@ -15,12 +15,9 @@ class MyMain:
 
     def close_all(self):
         if self._VoiceAssistant.close():
-            # if True: # self._WebDriver.close(): # happen in webdriver already
             return True
-            # else:
-            #    print('Couldnt close Web Driver')
         else:
-            print('Couldnt close Voice Assistant')
+            print('Could not close Voice Assistant')
 
     def initialize_game(self, game_name):
         print('Staring Game: ' + game_name)
@@ -29,7 +26,7 @@ class MyMain:
             self._WebDriver = WD.MyWebDriver(game)
             self._VoiceAssistant = VA.VoiceAssistant(game)
             return True
-        print('Didnt Got the game to load')
+        print('Did not Got a game to load')
         return False
 
     def log(self):
@@ -43,6 +40,7 @@ class MyMain:
             result, stop, msg = self._WebDriver.get_command(command_and_data['command'], command_and_data['parameters'],
                                                             command_and_data['response_text'])
             self._VoiceAssistant.result_of_command(result, msg)
+            self._VoiceAssistant.update_advice_counter()
         return stop
 
     def run(self):
@@ -57,5 +55,6 @@ class MyMain:
             result = self.close_all()
         if result is not None:
             print('Is everything got shutdown: ' + str(result))
+
 
 MyMain()

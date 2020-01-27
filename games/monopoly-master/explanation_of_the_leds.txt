@@ -1,5 +1,5 @@
 <p> <b>Red</b>, Daisy is off </p>
 <p> <b>Green</b>, Daisy is on </p>
-<p> <b>Orange</b>, Daisy is record </p>
-<p> <b>Yellow</b>, Daisy is lisetn </p>
-<p> <b>Blue</b>, Daisy is speak </p>
+<p> <b>Orange</b>, Daisy is recording </p>
+<p> <b>Yellow</b>, Daisy is listening </p>
+<p> <b>Blue</b>, Daisy is speaking </p>
