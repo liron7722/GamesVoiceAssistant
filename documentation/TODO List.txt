@@ -1,6 +1,5 @@
--auction issue
 -led issue
 -improve stt
 -do volume test function in rec.py to decide the the volume limit
 -clean the recording somehow (maybe dont let anything in below volume limit)
-- cheak bugs
+

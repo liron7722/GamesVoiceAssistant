@@ -2,7 +2,7 @@
 from copy import copy
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException, \
-    ElementNotVisibleException, ElementNotSelectableException, ElementNotInteractableException
+    ElementNotVisibleException, ElementNotSelectableException, ElementNotInteractableException, NoAlertPresentException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
@@ -101,11 +101,10 @@ class MyWebDriver:
     # input - elem as web element
     # output - return True if successful, False if not
     # do - click the elem
-    def click_elem(self, elem, msg):
+    @staticmethod
+    def click_elem(elem, msg):
         try:
             elem.click()
-            #if alert:
-                #self.alert_handle()
             return True, False, msg
         except ElementClickInterceptedException as exception:
             return False, False, 'Could not click that'
@@ -134,6 +133,20 @@ class MyWebDriver:
             return True, False, text
         except:
             return False, False, ''
+
+    def alert_handle(self, result=None):
+        driver = self._driver
+        try:
+            obj = driver.switch_to.alert
+            msg = 'alert massage says: ' + obj.text
+            if result == 'accept':
+                obj.accept()
+            elif result == 'dismiss':
+                obj.dismiss()
+            driver.switch_to.default_content()
+            return True, False, msg
+        except NoAlertPresentException as exception:
+            return False, False, msg
 
     # input - command_string as string, data as string
     # output - return True + None if successful, False if not + massage
@@ -164,6 +177,9 @@ class MyWebDriver:
         return self.execute_command(command_type, string_type, string, info, msg)
 
     def execute_command(self, command_type, string_type, string, data=None, msg=None):
+        if command_type == 'alert':
+            return self.alert_handle(data)
+
         elem = self.find_elem(string_type, string)
         if elem is None:
             return False, False, 'Could not find web element'
@@ -179,10 +195,5 @@ class MyWebDriver:
         elif command_type == 'hover':
             return self.hover_elem(elem)
 
-    def alert_handle(self):
-        driver = self._driver
-        obj = driver.switch_to.alert
-        msg = 'alert massage says: ' + obj.text
-        obj.accept()
-        driver.switch_to.default_content()
-        return True, False, msg
+
+

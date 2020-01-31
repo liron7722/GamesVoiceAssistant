@@ -11,6 +11,12 @@
         "string_type": "",
         "string": ""
     },
+	"alert": {
+        "name": "alert",
+        "my_type": "alert",
+        "string_type": "",
+        "string": ""
+    },
     "start game": {
         "name": "start game",
         "my_type": "click",
