@@ -36,7 +36,7 @@ class MyMain:
         game = self._GamesCenter.getGame(game_name)
         if game is not None:
             self._WebDriver = WD.MyWebDriver(game)
-            self._VoiceAssistant = VA.VoiceAssistant(game)
+            self._VoiceAssistant = VA.VoiceAssistant(game, self._WebDriver)
             return True
         print('Did not Got a game to load')
         return False

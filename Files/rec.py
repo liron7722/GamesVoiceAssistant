@@ -5,7 +5,6 @@ import time
 import math
 import struct
 import simpleaudio as sa
-from extra import change_status
 
 FORMAT=pyaudio.paInt16
 CHANNELS = 1  # 2
@@ -17,6 +16,7 @@ swidth = 2
 Volume_Limit = 750  # 750
 TIMEOUT_LENGTH = 0.75  # 1
 FILE_NAME = "RECORDING.wav"
+
 
 class Recorder:
     audio = None
@@ -70,31 +70,30 @@ class Recorder:
 
     def record(self, data):
         frames = [data]
-        while len(frames) < 1:
-            current = time.time()
-            end = time.time() + TIMEOUT_LENGTH
+        current = time.time()
+        end = time.time() + TIMEOUT_LENGTH
 
-            while current <= end:
+        while current <= end:
+            flag = True
+            data=self.stream.read(CHUNK)
+            data_chunk=array('h',data)
+            vol = max(data_chunk)
+
+            if vol >= Volume_Limit:
+                frames.append(data)
+                end = time.time() + TIMEOUT_LENGTH
                 flag = True
-                data=self.stream.read(CHUNK)
-                data_chunk=array('h',data)
-                vol = max(data_chunk)
+            current = time.time()
 
-                if vol >= Volume_Limit:
-                    frames.append(data)
-                    end = time.time() + TIMEOUT_LENGTH
-                    flag = True
-                current = time.time()
-
-                if current > (end - (TIMEOUT_LENGTH / 2)):
-                    if flag:
-                        flag = False
-                        print("Detecting Silence, going to stop")
+            if current > (end - (TIMEOUT_LENGTH / 2)):
+                if flag:
+                    flag = False
+                    print("Detecting Silence, going to stop")
 
         return frames
 
-    def listen(self):
-        change_status('yellow')
+    def listen(self, led_indicator):
+        led_indicator.change_status('yellow')
         self.open_stream()
         print('Listening beginning')
 
@@ -105,11 +104,11 @@ class Recorder:
                 break
 
         print('Recording beginning')
-        change_status('orange')
+        led_indicator.change_status('orange')
         frames = self.record(input)
         self.close_stream()
 
         print('Recording ended, Listening ended')
-        change_status('green')
+        led_indicator.change_status('green')
         # writing to file
         self.save_to_file(frames)
