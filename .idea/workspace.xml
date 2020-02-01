@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf2342df-fa06-484f-9190-41a66c5313fc" name="Default Changelist" comment="">
+    <list default="true" id="1859641d-013f-4a5a-8ae4-112d0a1a6b26" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Files/LedIndicator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GameVoiceAssistant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/VoiceAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/VoiceAssistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/extra.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/extra.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/games files/games_list_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/games files/games_list_file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/rec.py" beforeDir="false" afterPath="$PROJECT_DIR$/Files/rec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/monopoly-master/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/monopoly-master/ledicator.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/ledicator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/monopoly-master/monopoly.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/monopoly.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/monopoly-master/rules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/rules.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/monopoly-master/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/monopoly-master/voice_commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/games/monopoly-master/voice_commands.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/voice_assistant_status.txt" beforeDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,6 +39,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Documents\GamesVoiceAssistant\Files" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -65,7 +90,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cf2342df-fa06-484f-9190-41a66c5313fc" name="Default Changelist" comment="" />
+      <changelist id="1859641d-013f-4a5a-8ae4-112d0a1a6b26" name="Default Changelist" comment="" />
       <created>1579901883511</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
