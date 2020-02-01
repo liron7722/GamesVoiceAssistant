@@ -70,26 +70,25 @@ class Recorder:
 
     def record(self, data):
         frames = [data]
-        while len(frames) < 1:
-            current = time.time()
-            end = time.time() + TIMEOUT_LENGTH
+        current = time.time()
+        end = time.time() + TIMEOUT_LENGTH
 
-            while current <= end:
+        while current <= end:
+            flag = True
+            data=self.stream.read(CHUNK)
+            data_chunk=array('h',data)
+            vol = max(data_chunk)
+
+            if vol >= Volume_Limit:
+                frames.append(data)
+                end = time.time() + TIMEOUT_LENGTH
                 flag = True
-                data=self.stream.read(CHUNK)
-                data_chunk=array('h',data)
-                vol = max(data_chunk)
+            current = time.time()
 
-                if vol >= Volume_Limit:
-                    frames.append(data)
-                    end = time.time() + TIMEOUT_LENGTH
-                    flag = True
-                current = time.time()
-
-                if current > (end - (TIMEOUT_LENGTH / 2)):
-                    if flag:
-                        flag = False
-                        print("Detecting Silence, going to stop")
+            if current > (end - (TIMEOUT_LENGTH / 2)):
+                if flag:
+                    flag = False
+                    print("Detecting Silence, going to stop")
 
         return frames
 
