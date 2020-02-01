@@ -14,19 +14,22 @@ CHUNK=1024
 Threshold = 10
 SHORT_NORMALIZE = (1.0/32768.0)
 swidth = 2
-Volume_Limit = 500  # 750
+Volume_Limit = 750  # 750
 TIMEOUT_LENGTH = 0.75  # 1
 FILE_NAME = "RECORDING.wav"
 
-
 class Recorder:
+    audio = None
+    stream = None
+
     def open_stream(self):
-        self.audio=pyaudio.PyAudio() #instantiate the pyaudio
-        #recording prerequisites
-        self.stream=self.audio.open(format=FORMAT,channels=CHANNELS,
-                          rate=RATE,
-                          input=True,
-                          frames_per_buffer=CHUNK)
+        self.audio = pyaudio.PyAudio()  # instantiate the pyaudio
+        # recording prerequisites
+        self.stream = self.audio.open(format=FORMAT,
+                                      channels=CHANNELS,
+                                      rate=RATE,
+                                      input=True,
+                                      frames_per_buffer=CHUNK)
 
     def close_stream(self):
         self.stream.stop_stream()
@@ -34,12 +37,12 @@ class Recorder:
         self.audio.terminate()
 
     def save_to_file(self, frames):
-        wavfile=wave.open(FILE_NAME,'wb')
+        wavfile = wave.open(FILE_NAME,'wb')
         wavfile.setnchannels(CHANNELS)
         wavfile.setsampwidth(self.audio.get_sample_size(FORMAT))
         wavfile.setframerate(RATE)
         if frames is not None:
-            wavfile.writeframes(b''.join(frames))#append frames recorded to file
+            wavfile.writeframes(b''.join(frames))  # append frames recorded to file
         wavfile.close()
 
     @staticmethod
@@ -65,8 +68,8 @@ class Recorder:
 
         return rms * 1000
 
-    def record(self):
-        frames = []
+    def record(self, data):
+        frames = [data]
         while len(frames) < 1:
             current = time.time()
             end = time.time() + TIMEOUT_LENGTH
@@ -95,7 +98,7 @@ class Recorder:
         self.open_stream()
         print('Listening beginning')
 
-        while False:
+        while True:
             input = self.stream.read(CHUNK)
             rms_val = self.rms(input)
             if rms_val > Threshold:
@@ -103,7 +106,7 @@ class Recorder:
 
         print('Recording beginning')
         change_status('orange')
-        frames = self.record()
+        frames = self.record(input)
         self.close_stream()
 
         print('Recording ended, Listening ended')

@@ -12,6 +12,7 @@ class WebElements:
         self._string_type = string_type
         self._string = string
 
+    # output - return info based on request
     def get_data(self, string=None):
         if string is None:
             return self._name, self._type, self._string_type, self._string

@@ -18,6 +18,7 @@ class Game:
         self._path = path
         self.load_web_elements()
 
+    # output - return info based on request
     def get_info(self, string=None):
         if string is None:
             return {'name':self._name, 'creator':self._creator, 'path':self._url, 'web_elem':self._web_elements}
@@ -30,6 +31,7 @@ class Game:
         elif string is 'web_elem':
             return self._web_elements
 
+    # do - create and save dict of WebElements from the dict in the json file
     def load_web_elements(self):
         self._web_elements = dict()
         data = readJson(self._path, self._json) # get dict[name] = dict[name \ my_type \ path_type \ path] = 'string'
