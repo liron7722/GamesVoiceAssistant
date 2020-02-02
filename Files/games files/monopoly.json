@@ -1,5 +1,17 @@
 {
-    "new game": {
+    "front_led": {
+        "name": "front_led",
+        "my_type": "script",
+        "string_type": "id",
+        "string": "led-indication"
+    },
+	"back_led": {
+        "name": "back_led",
+        "my_type": "script",
+        "string_type": "id",
+        "string": "led2"
+    },
+	"new game": {
         "name": "new game",
         "my_type": "",
         "string_type": "",

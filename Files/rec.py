@@ -5,12 +5,13 @@ import time
 import math
 import struct
 import simpleaudio as sa
+from extra import picker
 
 FORMAT=pyaudio.paInt16
 CHANNELS = 1  # 2
 RATE= 16000  # 44100
 CHUNK=1024
-Threshold = 10
+Threshold = 35
 SHORT_NORMALIZE = (1.0/32768.0)
 swidth = 2
 Volume_Limit = 750  # 750
@@ -21,6 +22,12 @@ FILE_NAME = "RECORDING.wav"
 class Recorder:
     audio = None
     stream = None
+    _led_update = None
+
+    def __init__(self, led_func=None):
+        self._led_update = picker
+        if led_func is not None:
+            self._led_update = led_func
 
     def open_stream(self):
         self.audio = pyaudio.PyAudio()  # instantiate the pyaudio
@@ -92,8 +99,8 @@ class Recorder:
 
         return frames
 
-    def listen(self, led_indicator):
-        led_indicator.change_status('yellow')
+    def listen(self):
+        self._led_update('yellow')
         self.open_stream()
         print('Listening beginning')
 
@@ -101,14 +108,15 @@ class Recorder:
             input = self.stream.read(CHUNK)
             rms_val = self.rms(input)
             if rms_val > Threshold:
+                print('Detected rms volume at: ' + str(rms_val))
                 break
 
         print('Recording beginning')
-        led_indicator.change_status('orange')
+        self._led_update('orange')
         frames = self.record(input)
         self.close_stream()
 
         print('Recording ended, Listening ended')
-        led_indicator.change_status('green')
+        self._led_update('green')
         # writing to file
         self.save_to_file(frames)

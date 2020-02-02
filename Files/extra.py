@@ -18,3 +18,13 @@ def writeJson(path, filename, data):
 
 def get_path():
     return os.path.abspath(os.getcwd())
+
+
+def change_status(color):
+    with open(COLOR_File, 'w') as file:
+        file.write(color)
+        file.close()
+
+
+def picker(var):
+    return

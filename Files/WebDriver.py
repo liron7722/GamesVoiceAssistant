@@ -2,7 +2,8 @@
 from copy import copy
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException, \
-    ElementNotVisibleException, ElementNotSelectableException, ElementNotInteractableException, NoAlertPresentException
+    ElementNotVisibleException, ElementNotSelectableException, ElementNotInteractableException, NoAlertPresentException, \
+    JavascriptException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,7 +11,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class MyWebDriver:
-    _driver = webdriver.Firefox()  # Web Driver
+    _driver = webdriver.Chrome()  # Web Driver
     _delay = 1  # Timer for finding web element
     _page = None  # Game starting page
     _web_elements = None  # Game buttons
@@ -53,6 +54,21 @@ class MyWebDriver:
                     text.remove(line)
             self._logs = last_log  # save all of the new log
             return text  # return only new lines of the log
+
+    # input - color as string
+    # do - update each led
+    def led_update(self, color):
+        led_list = ['front_led', 'back_led']
+        data = {'led_color': color}
+        for location in led_list:
+            self.get_command(location, data)
+
+    # input - color as string
+    # output - script as string
+    @staticmethod
+    def get_led_script(color):
+        string = "arguments[0].style.backgroundColor = 'red'"
+        return string.replace('red', color)
 
     # input - elem_type as string, string as string
     # output - return element if found in <delay> seconds, None otherwise
@@ -137,6 +153,17 @@ class MyWebDriver:
         except:
             return False, False, ''
 
+    # input - driver as web driver, elem as web element, string as string
+    # output - return True if successful, False as stop flag, massage as string
+    # do - execute script on element
+    @staticmethod
+    def exec_script(driver, elem, string):
+        try:
+            driver.execute_script(string, elem)
+            return True, False, 'done'
+        except JavascriptException:
+            return False, False, ''
+
     # input - result as string
     # output - return True if successful, False as stop flag, massage as string
     # do - return massage if result none, accept alert if result accept so accept, if result dismiss so dismiss
@@ -178,6 +205,8 @@ class MyWebDriver:
                 string = string.replace('1', str(int(data['number'])))
             if 'label' in data.keys():
                 string = string.replace('buy', data['label'])
+            if 'led_color' in data.keys():
+                info = self.get_led_script(data['led_color'])
             if 'data' in data.keys():
                 info = data['data']
         return self.execute_command(command_type, string_type, string, info, msg)
@@ -204,6 +233,7 @@ class MyWebDriver:
             return self.select_elem(elem, data, msg)
         elif command_type == 'hover':
             return self.hover_elem(driver, elem)
+        elif command_type == 'script':
+            return self.exec_script(driver, elem, data)
 
         return False, False, 'I dont know how to handle command type: ' + command_type
-

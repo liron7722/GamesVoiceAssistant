@@ -1,12 +1,10 @@
 # imports
 import io
 import os
-from typing import Dict
-
+from extra import *
 import dialogflow_v2 as dialogflow
 from rec import Recorder
 import simpleaudio as sa
-import LedIndicator as LI
 
 # Imports the Google Cloud client library
 from google.cloud import speech
@@ -26,11 +24,11 @@ class VoiceAssistant:
     _kw_heard = False  # boolean
     _chat_commands = ['creators', 'favorite food', 'Default Welcome Intent', 'advice', 'welcome back']  # add here everything that is chat only
     _game_commands = None  # list
-    _status_dict: Dict[str, str] = {'off': 'red', 'on': 'green', 'listen': 'yellow', 'record': 'orange', 'speak': 'blue'}
+    _status_dict = {'off': 'red', 'on': 'green', 'listen': 'yellow', 'record': 'orange', 'speak': 'blue'}
+    _led_update = None
     _my_status = 'red'  # color as string
     _advice_counter = 0  # num as int
     _recorder = None  # recorder class
-    _led_indicator = None  # led class
 
     _DIALOGFLOW_PROJECT_ID = 'gamesvoiceassistant'
     _DIALOGFLOW_LANGUAGE_CODE = 'en'
@@ -39,14 +37,15 @@ class VoiceAssistant:
     _language_code ='en-US'
     _voice_gender = texttospeech.enums.SsmlVoiceGender.FEMALE
 
-    def __init__(self, game, webDriver, gender_type=None, name=None):
-        self._led_indicator = LI.LedIndicator(webDriver)
-        self._recorder = Recorder()
+    def __init__(self, game, gender_type=None, name=None, led_func=None):
+        self._recorder = Recorder(led_func)
+        self._led_update = led_func
         self._game_commands = game.get_info('web_elem').keys()
         self.gender(gender_type)
         if name is not None:
             self._name = name
-        self._led_indicator.change_status(self._status_dict['off'])
+        if led_func is not None:
+            self._led_update(self._status_dict['off'])
 
     # input - gender_type as string
     # do - set gender based on input
@@ -74,7 +73,7 @@ class VoiceAssistant:
     # do - set keyword to off, set key, say massage
     def status_change(self, isOn, key, massage):
         self._kw_heard = isOn
-        self._led_indicator.change_status(self._status_dict[key])
+        self._led_update(self._status_dict[key])
         self.ack(massage)
         return True
 
@@ -112,7 +111,7 @@ class VoiceAssistant:
     def listen(self):
         text = None
         while text is None:
-            self._recorder.listen(self._led_indicator)  # create sound file
+            self._recorder.listen()  # create sound file
             text = self.stt()  # turn sound file into string
             if text is not None:  # user said something
                 if self._shutdown_key_word in text:  # user want to turn off voice assistant
@@ -177,7 +176,7 @@ class VoiceAssistant:
         # voice parameters and audio file type
         response = client.synthesize_speech(synthesis_input, voice, audio_config)
 
-        self._led_indicator.change_status(self._status_dict['speak'])  # call for voice assistant led change
+        self._led_update(self._status_dict['speak'])  # call for voice assistant led change
         self.play(response.audio_content)  # play sound
 
     # input - text as string
