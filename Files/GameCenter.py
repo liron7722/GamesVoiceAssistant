@@ -1,6 +1,7 @@
 # imports
 from extra import *
 from Game import Game
+import os
 
 
 class GameCenter:
@@ -15,8 +16,10 @@ class GameCenter:
         self._games_list_file = 'games_list_file.json'
         self._path = get_path() + '/' + self._games_folder
         game_list = readJson(self._path, self._games_list_file)
+        pwd = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         for game in game_list:
-            item = Game(game['name'], game['creator'], game['url'], game['json_name'], self._path)
+            print(game['url'])
+            item = Game(game['name'], game['creator'], os.path.join(pwd, game['url']), game['json_name'], self._path)
             self._list_of_games.append(item)
 
     # input - game as Game
