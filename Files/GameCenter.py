@@ -12,7 +12,7 @@ class GameCenter:
 
     def __init__(self):
         self._list_of_games = []
-        self._games_folder = 'games files'
+        self._games_folder = 'games_files'
         self._games_list_file = 'games_list_file.json'
         self._path = get_path() + '/' + self._games_folder
         game_list = readJson(self._path, self._games_list_file)
