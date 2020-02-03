@@ -12,7 +12,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class MyWebDriver:
-    _driver = webdriver.Chrome(executable_path=get_path() + '\chromedriver.exe')  # Web Driver
+    _driver = webdriver.Chrome()  # Web Driver
     _delay = 1  # Timer for finding web element
     _page = None  # Game starting page
     _web_elements = None  # Game buttons
