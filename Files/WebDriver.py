@@ -46,12 +46,13 @@ class MyWebDriver:
     # do - save new list of log, split new lines from old and send them
     def run_log(self):
         result, stop, log_text = self.get_command('log')
-        if result:  # result true if there is text, otherwise false
+        if result and len(log_text) > 0:  # result true if there is text, otherwise false
             last_log = log_text.splitlines()  # split string to list of strings
             text = copy(last_log)  # make copy of the list
             if self._logs is not None:  # if we got old log
                 for line in self._logs:
-                    text.remove(line)
+                    if line in text:
+                        text.remove(line)
             self._logs = last_log  # save all of the new log
             return text  # return only new lines of the log
 
