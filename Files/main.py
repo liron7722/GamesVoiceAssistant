@@ -27,7 +27,7 @@ class MyMain:
         print('Choose Game:')
         for index in range(len(list_of_games)):
             print(str(index + 1) + ': ' + list_of_games[index])
-        input = 0  # TODO input from user as int
+        input = 0  # TODO input from user as int when there will be more games
         return list_of_games[input]
 
     # do - start game

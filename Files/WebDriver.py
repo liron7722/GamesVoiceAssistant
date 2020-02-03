@@ -1,4 +1,5 @@
 # imports
+from extra import get_path
 from copy import copy
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException, \
@@ -11,7 +12,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class MyWebDriver:
-    _driver = webdriver.Chrome()  # Web Driver
+    _driver = webdriver.Chrome(executable_path=get_path() + '\chromedriver.exe')  # Web Driver
     _delay = 1  # Timer for finding web element
     _page = None  # Game starting page
     _web_elements = None  # Game buttons
